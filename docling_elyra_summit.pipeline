@@ -27,12 +27,12 @@
               "filename": "copy_files.py",
               "runtime_image": "continuumio/anaconda3@sha256:a2816acd3acda208d92e0bf6c11eb41fda9009ea20f24e123dbf84bb4bd4c4b8"
             },
-            "label": "",
+            "label": "Copy Files",
             "ui_data": {
-              "label": "copy_files.py",
+              "label": "Copy Files",
               "image": "/static/elyra/python.svg",
-              "x_pos": 104,
-              "y_pos": 191,
+              "x_pos": 50,
+              "y_pos": 165,
               "description": "Run Python script"
             }
           },
@@ -48,6 +48,198 @@
                   "label": "Input Port"
                 }
               }
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "e91d428b-1397-4f77-9514-3f29be067bcd",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "HITL_MarkdownReview.ipynb",
+              "runtime_image": "continuumio/anaconda3@sha256:a2816acd3acda208d92e0bf6c11eb41fda9009ea20f24e123dbf84bb4bd4c4b8"
+            },
+            "label": "HITL Markdown",
+            "ui_data": {
+              "label": "HITL Markdown",
+              "image": "/static/elyra/notebook.svg",
+              "x_pos": 137.00006103515625,
+              "y_pos": 480,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "6fe5ca6e-7833-4511-b424-bd0d4422c6cc",
+                  "node_id_ref": "db01761f-d8d8-4a07-907c-f4af071227c6",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "8a30ef71-5ae7-4c47-b3b9-e1c583ed99fe",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "ExampleGenerator.ipynb",
+              "runtime_image": "continuumio/anaconda3@sha256:a2816acd3acda208d92e0bf6c11eb41fda9009ea20f24e123dbf84bb4bd4c4b8"
+            },
+            "label": "Ex Generator",
+            "ui_data": {
+              "label": "Ex Generator",
+              "image": "/static/elyra/notebook.svg",
+              "x_pos": 403.00006103515625,
+              "y_pos": 479,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "15424849-410b-4701-b525-8420623752eb",
+                  "node_id_ref": "e91d428b-1397-4f77-9514-3f29be067bcd",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "b816de19-69a2-4660-a2af-ca808be3581a",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "HITL_qna_review.ipynb",
+              "runtime_image": "continuumio/anaconda3@sha256:a2816acd3acda208d92e0bf6c11eb41fda9009ea20f24e123dbf84bb4bd4c4b8"
+            },
+            "label": "HITL QNA Review",
+            "ui_data": {
+              "label": "HITL QNA Review",
+              "image": "/static/elyra/notebook.svg",
+              "x_pos": 647.0000610351562,
+              "y_pos": 479,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "ad0b2c20-1e79-4d04-aab6-12c685351c7b",
+                  "node_id_ref": "8a30ef71-5ae7-4c47-b3b9-e1c583ed99fe",
+                  "port_id_ref": "outPort"
+                }
+              ]
             }
           ],
           "outputs": [
@@ -84,12 +276,12 @@
               "filename": "Converter.ipynb",
               "runtime_image": "continuumio/anaconda3@sha256:a2816acd3acda208d92e0bf6c11eb41fda9009ea20f24e123dbf84bb4bd4c4b8"
             },
-            "label": "",
+            "label": "PDF Converter",
             "ui_data": {
-              "label": "Converter.ipynb",
+              "label": "PDF Converter",
               "image": "/static/elyra/notebook.svg",
-              "x_pos": 365,
-              "y_pos": 191,
+              "x_pos": 530,
+              "y_pos": 50,
               "description": "Run notebook file"
             }
           },
@@ -107,7 +299,7 @@
               },
               "links": [
                 {
-                  "id": "fe42d897-f8b1-4bd9-b14a-9273ca4c93f0",
+                  "id": "1f91322b-3b0e-4d90-91d6-9e67751697a0",
                   "node_id_ref": "e4165c2f-c2b3-4415-92b8-a0d36b4b4e69",
                   "port_id_ref": "outPort"
                 }
@@ -130,9 +322,9 @@
           ]
         },
         {
-          "id": "0296a693-6fcb-497c-80dd-0cac6474848c",
+          "id": "18701264-ec93-46b7-bd16-c0a40f3c3bb9",
           "type": "execution_node",
-          "op": "execute-notebook-node",
+          "op": "execute-python-node",
           "app_data": {
             "component_parameters": {
               "dependencies": [],
@@ -145,16 +337,16 @@
               "kubernetes_shared_mem_size": {},
               "kubernetes_tolerations": [],
               "mounted_volumes": [],
-              "filename": "ExampleGenerator.ipynb",
+              "filename": "JSON_to_PDF.py",
               "runtime_image": "continuumio/anaconda3@sha256:a2816acd3acda208d92e0bf6c11eb41fda9009ea20f24e123dbf84bb4bd4c4b8"
             },
-            "label": "",
+            "label": "JSON to PDF",
             "ui_data": {
-              "label": "ExampleGenerator.ipynb",
-              "image": "/static/elyra/notebook.svg",
-              "x_pos": 623,
-              "y_pos": 191,
-              "description": "Run notebook file"
+              "label": "JSON to PDF",
+              "image": "/static/elyra/python.svg",
+              "x_pos": 332,
+              "y_pos": 165,
+              "description": "Run Python script"
             }
           },
           "inputs": [
@@ -171,8 +363,8 @@
               },
               "links": [
                 {
-                  "id": "7436849f-16fc-4bff-949f-bc1d0ecdd9b6",
-                  "node_id_ref": "5ea8998d-4595-4b7d-948b-09d145d6ddb4",
+                  "id": "69c44a64-0062-455c-978e-3de0268cefce",
+                  "node_id_ref": "e4165c2f-c2b3-4415-92b8-a0d36b4b4e69",
                   "port_id_ref": "outPort"
                 }
               ]
@@ -194,7 +386,81 @@
           ]
         },
         {
-          "id": "2f4e0c9a-c36a-4aea-9036-acdad7172484",
+          "id": "db01761f-d8d8-4a07-907c-f4af071227c6",
+          "type": "execution_node",
+          "op": "execute-python-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "combine_markdown.py",
+              "runtime_image": "continuumio/anaconda3@sha256:a2816acd3acda208d92e0bf6c11eb41fda9009ea20f24e123dbf84bb4bd4c4b8"
+            },
+            "label": "Combine Markdown",
+            "ui_data": {
+              "label": "Combine Markdown",
+              "image": "/static/elyra/python.svg",
+              "x_pos": 770,
+              "y_pos": 165,
+              "description": "Run Python script"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "859c57be-dba9-4354-b3c6-cfed24189c94",
+                  "node_id_ref": "5ea8998d-4595-4b7d-948b-09d145d6ddb4",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "a4476951-86ed-434d-8062-9bfcc79c9828",
+                  "node_id_ref": "d5fb32a3-6931-45b6-b125-e7f2c33fc6ab",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "897526f2-d1e0-4652-8df4-f23f168c5bb4",
+                  "node_id_ref": "34e54629-3299-4245-87fc-1d1caa582ac2",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "d5fb32a3-6931-45b6-b125-e7f2c33fc6ab",
           "type": "execution_node",
           "op": "execute-notebook-node",
           "app_data": {
@@ -209,15 +475,15 @@
               "kubernetes_shared_mem_size": {},
               "kubernetes_tolerations": [],
               "mounted_volumes": [],
-              "filename": "HITL_MarkdownReview.ipynb",
+              "filename": "Converter.ipynb",
               "runtime_image": "continuumio/anaconda3@sha256:a2816acd3acda208d92e0bf6c11eb41fda9009ea20f24e123dbf84bb4bd4c4b8"
             },
-            "label": "",
+            "label": "PDF Converter",
             "ui_data": {
-              "label": "HITL_MarkdownReview.ipynb",
+              "label": "PDF Converter",
               "image": "/static/elyra/notebook.svg",
-              "x_pos": 871,
-              "y_pos": 191,
+              "x_pos": 530,
+              "y_pos": 165,
               "description": "Run notebook file"
             }
           },
@@ -235,8 +501,72 @@
               },
               "links": [
                 {
-                  "id": "d3db56c9-a2ae-4bb9-b743-5f2d21a612ef",
-                  "node_id_ref": "0296a693-6fcb-497c-80dd-0cac6474848c",
+                  "id": "f1d4dfd0-4e4b-4522-b929-026c4a623009",
+                  "node_id_ref": "18701264-ec93-46b7-bd16-c0a40f3c3bb9",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "34e54629-3299-4245-87fc-1d1caa582ac2",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "Converter.ipynb",
+              "runtime_image": "continuumio/anaconda3@sha256:a2816acd3acda208d92e0bf6c11eb41fda9009ea20f24e123dbf84bb4bd4c4b8"
+            },
+            "label": "DOCX Converter",
+            "ui_data": {
+              "label": "DOCX Converter",
+              "image": "/static/elyra/notebook.svg",
+              "x_pos": 530,
+              "y_pos": 280,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "37174900-423e-4dc6-b0c1-27c4e4e232af",
+                  "node_id_ref": "e4165c2f-c2b3-4415-92b8-a0d36b4b4e69",
                   "port_id_ref": "outPort"
                 }
               ]
