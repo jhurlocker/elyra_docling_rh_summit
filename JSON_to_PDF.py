@@ -7,6 +7,22 @@ def create_and_save_file(filename, content):
     print(f"An error occurred: {e}")
 
 filename = "json_to_pdf_log.txt"
-text_content = """This contains the logs for json_pdf.py"""
 
-create_and_save_file(filename, text_content)
+
+import os
+
+def get_file_type_by_extension(filepath):
+    """Get the file extension"""
+    name, ext = os.path.splitext(filepath)
+    return ext.lower()
+
+# Example usage
+file_path = "files/CELEX-CSV.pdf"
+file_type = get_file_type_by_extension(file_path)
+print(f"The file extension is: {file_type}")
+
+text_content = f"This contains the logs for json_pdf.py. The file extension type is= {file_type}"
+if file_type == ".csv":
+    create_and_save_file(filename, text_content)
+else:
+    print("Not a CSV file type.")
