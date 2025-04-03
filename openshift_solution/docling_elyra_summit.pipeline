@@ -25,12 +25,12 @@
               "kubernetes_tolerations": [],
               "mounted_volumes": [],
               "filename": "copy_files.py",
-              "runtime_image": "continuumio/anaconda3@sha256:a2816acd3acda208d92e0bf6c11eb41fda9009ea20f24e123dbf84bb4bd4c4b8"
+              "runtime_image": "quay.io/modh/runtime-images@sha256:a6e87550d7f932732b8e52c309d356fb76ae0ba0fd0b8566de0ba4ff49c2db84"
             },
             "label": "Ingest Files",
             "ui_data": {
               "label": "Ingest Files",
-              "image": "/static/elyra/python.svg",
+              "image": "/notebook/summit-project/archie-workbench/static/elyra/python.svg",
               "x_pos": 78,
               "y_pos": 92.5,
               "description": "Run Python script"
@@ -82,12 +82,12 @@
               "kubernetes_tolerations": [],
               "mounted_volumes": [],
               "filename": "HITL_MarkdownReview.ipynb",
-              "runtime_image": "continuumio/anaconda3@sha256:a2816acd3acda208d92e0bf6c11eb41fda9009ea20f24e123dbf84bb4bd4c4b8"
+              "runtime_image": "quay.io/modh/runtime-images@sha256:a6e87550d7f932732b8e52c309d356fb76ae0ba0fd0b8566de0ba4ff49c2db84"
             },
             "label": "HITL Markdown",
             "ui_data": {
               "label": "HITL Markdown",
-              "image": "/static/elyra/notebook.svg",
+              "image": "/notebook/summit-project/archie-workbench/static/elyra/notebook.svg",
               "x_pos": 148.00003051757812,
               "y_pos": 266.5,
               "description": "Run notebook file"
@@ -146,12 +146,12 @@
               "kubernetes_tolerations": [],
               "mounted_volumes": [],
               "filename": "ExampleGenerator.ipynb",
-              "runtime_image": "continuumio/anaconda3@sha256:a2816acd3acda208d92e0bf6c11eb41fda9009ea20f24e123dbf84bb4bd4c4b8"
+              "runtime_image": "quay.io/modh/runtime-images@sha256:a6e87550d7f932732b8e52c309d356fb76ae0ba0fd0b8566de0ba4ff49c2db84"
             },
             "label": "QNA Generator",
             "ui_data": {
               "label": "QNA Generator",
-              "image": "/static/elyra/notebook.svg",
+              "image": "/notebook/summit-project/archie-workbench/static/elyra/notebook.svg",
               "x_pos": 405.0000305175781,
               "y_pos": 265.5,
               "description": "Run notebook file"
@@ -210,12 +210,12 @@
               "kubernetes_tolerations": [],
               "mounted_volumes": [],
               "filename": "HITL_qna_review.ipynb",
-              "runtime_image": "continuumio/anaconda3@sha256:a2816acd3acda208d92e0bf6c11eb41fda9009ea20f24e123dbf84bb4bd4c4b8"
+              "runtime_image": "quay.io/modh/runtime-images@sha256:a6e87550d7f932732b8e52c309d356fb76ae0ba0fd0b8566de0ba4ff49c2db84"
             },
             "label": "HITL QNA",
             "ui_data": {
               "label": "HITL QNA",
-              "image": "/static/elyra/notebook.svg",
+              "image": "/notebook/summit-project/archie-workbench/static/elyra/notebook.svg",
               "x_pos": 661,
               "y_pos": 265.5,
               "description": "Run notebook file"
@@ -274,12 +274,12 @@
               "kubernetes_tolerations": [],
               "mounted_volumes": [],
               "filename": "combine_markdown.py",
-              "runtime_image": "continuumio/anaconda3@sha256:a2816acd3acda208d92e0bf6c11eb41fda9009ea20f24e123dbf84bb4bd4c4b8"
+              "runtime_image": "quay.io/modh/runtime-images@sha256:a6e87550d7f932732b8e52c309d356fb76ae0ba0fd0b8566de0ba4ff49c2db84"
             },
             "label": "Combine Markdown",
             "ui_data": {
               "label": "Combine Markdown",
-              "image": "/static/elyra/python.svg",
+              "image": "/notebook/summit-project/archie-workbench/static/elyra/python.svg",
               "x_pos": 719,
               "y_pos": 92.5,
               "description": "Run Python script"
@@ -354,13 +354,13 @@
               "kubernetes_shared_mem_size": {},
               "kubernetes_tolerations": [],
               "mounted_volumes": [],
-              "filename": "../instruct-generate/injest-local.ipynb",
-              "runtime_image": "continuumio/anaconda3@sha256:a2816acd3acda208d92e0bf6c11eb41fda9009ea20f24e123dbf84bb4bd4c4b8"
+              "filename": "../../instruct-generate/ingest-summit.ipynb",
+              "runtime_image": "quay.io/modh/runtime-images@sha256:a6e87550d7f932732b8e52c309d356fb76ae0ba0fd0b8566de0ba4ff49c2db84"
             },
             "label": "PDF Converter",
             "ui_data": {
               "label": "PDF Converter",
-              "image": "/static/elyra/notebook.svg",
+              "image": "/notebook/summit-project/archie-workbench/static/elyra/notebook.svg",
               "x_pos": 384,
               "y_pos": 30,
               "description": "Run notebook file"
@@ -425,13 +425,13 @@
               "kubernetes_shared_mem_size": {},
               "kubernetes_tolerations": [],
               "mounted_volumes": [],
-              "filename": "../instruct-generate/injest-local.ipynb",
-              "runtime_image": "continuumio/anaconda3@sha256:a2816acd3acda208d92e0bf6c11eb41fda9009ea20f24e123dbf84bb4bd4c4b8"
+              "filename": "../../instruct-generate/ingest-summit.ipynb",
+              "runtime_image": "quay.io/modh/runtime-images@sha256:a6e87550d7f932732b8e52c309d356fb76ae0ba0fd0b8566de0ba4ff49c2db84"
             },
             "label": "DOCX Converter",
             "ui_data": {
               "label": "DOCX Converter",
-              "image": "/static/elyra/notebook.svg",
+              "image": "/notebook/summit-project/archie-workbench/static/elyra/notebook.svg",
               "x_pos": 385,
               "y_pos": 91,
               "description": "Run notebook file"
@@ -496,13 +496,13 @@
               "kubernetes_shared_mem_size": {},
               "kubernetes_tolerations": [],
               "mounted_volumes": [],
-              "filename": "../instruct-generate/injest-local.ipynb",
-              "runtime_image": "continuumio/anaconda3@sha256:a2816acd3acda208d92e0bf6c11eb41fda9009ea20f24e123dbf84bb4bd4c4b8"
+              "filename": "../../instruct-generate/ingest-summit.ipynb",
+              "runtime_image": "quay.io/modh/runtime-images@sha256:a6e87550d7f932732b8e52c309d356fb76ae0ba0fd0b8566de0ba4ff49c2db84"
             },
             "label": "CSV Converter",
             "ui_data": {
               "label": "CSV Converter",
-              "image": "/static/elyra/notebook.svg",
+              "image": "/notebook/summit-project/archie-workbench/static/elyra/notebook.svg",
               "x_pos": 385,
               "y_pos": 146,
               "description": "Run notebook file"
@@ -579,9 +579,10 @@
           ]
         },
         "version": 8,
+        "runtime_type": "KUBEFLOW_PIPELINES",
         "properties": {
           "name": "docling_elyra_summit",
-          "runtime": "Generic",
+          "runtime": "Data Science Pipelines",
           "pipeline_defaults": {
             "kubernetes_shared_mem_size": {},
             "kubernetes_pod_labels": [],
