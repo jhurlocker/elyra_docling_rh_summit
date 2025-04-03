@@ -145,7 +145,7 @@
               "kubernetes_shared_mem_size": {},
               "kubernetes_tolerations": [],
               "mounted_volumes": [],
-              "filename": "ExampleGenerator.ipynb",
+              "filename": "../../instruct-generate/injest-splitter.ipynb",
               "runtime_image": "quay.io/modh/runtime-images@sha256:a6e87550d7f932732b8e52c309d356fb76ae0ba0fd0b8566de0ba4ff49c2db84"
             },
             "label": "QNA Generator",
