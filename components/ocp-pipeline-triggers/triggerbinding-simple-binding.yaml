@@ -1,0 +1,9 @@
+﻿apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerBinding
+metadata:
+  name: simple-binding
+  namespace: summit-project
+spec:
+  params:
+    - name: bucketName
+      value: '$(body.Records[0].s3.bucket.name)'

@@ -1,0 +1,97 @@
+apiVersion: kubeflow.org/v1
+kind: Notebook
+metadata:
+  annotations:
+    notebooks.opendatahub.io/inject-oauth: "true"
+    opendatahub.io/image-display-name: Standard Data Science
+    notebooks.opendatahub.io/oauth-logout-url: ""
+    opendatahub.io/accelerator-name: ""
+    openshift.io/description: ""
+    openshift.io/display-name: elyra-docling-wrkbench
+    notebooks.opendatahub.io/last-image-selection: "s2i-generic-data-science-notebook:2024.2"
+    argocd.argoproj.io/sync-options: ServerSideApply=true
+  name: elyra-docling-wrkbench
+spec:
+  template:
+    spec:
+      affinity: {}
+      containers:
+        - name: elyra-docling-wrkbench
+          image: "image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-generic-data-science-notebook:2024.2"
+          resources:
+            limits:
+              cpu: "2"
+              memory: 8Gi
+            requests:
+              cpu: "1"
+              memory: 8Gi
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /notebook/summit-project/elyra-docling-wrkbench/api
+              port: notebook-port
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /notebook/summit-project/elyra-docling-wrkbench/api
+              port: notebook-port
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
+          env:
+            - name: NOTEBOOK_ARGS
+              value: |-
+                --ServerApp.port=8888
+                --ServerApp.token=''
+                --ServerApp.password=''
+                --ServerApp.base_url=/notebook/summit-project/elyra-docling-wrkbench
+                --ServerApp.quit_button=False
+                --ServerApp.tornado_settings={"user":"user1","hub_host":"","hub_prefix":"/projects/summit-project"}
+            - name: JUPYTER_IMAGE
+              value: "image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-generic-data-science-notebook:2024.2"
+          ports:
+            - containerPort: 8888
+              name: notebook-port
+              protocol: TCP
+          imagePullPolicy: Always
+          volumeMounts:
+            - mountPath: /opt/app-root/src
+              name: elyra-docling-wrkbench
+            - mountPath: /dev/shm
+              name: shm
+            - mountPath: /etc/oauth/config
+              name: oauth-config
+            - mountPath: /etc/tls/private
+              name: tls-certificates
+          workingDir: /opt/app-root/src
+      enableServiceLinks: false
+      serviceAccountName: elyra-docling-wrkbench
+      volumes:
+        - name: elyra-docling-wrkbench
+          persistentVolumeClaim:
+            claimName: elyra-docling-wrkbench
+        - emptyDir:
+            medium: Memory
+          name: shm
+        - configMap:
+            items:
+              - key: ca-bundle.crt
+                path: ca-bundle.crt
+            name: workbench-trusted-ca-bundle
+            optional: true
+          name: trusted-ca
+        - name: oauth-config
+          secret:
+            defaultMode: 420
+            secretName: elyra-docling-wrkbench-oauth-config
+        - name: tls-certificates
+          secret:
+            defaultMode: 420
+            secretName: elyra-docling-wrkbench-tls

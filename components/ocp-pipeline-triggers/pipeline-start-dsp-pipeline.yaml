@@ -1,0 +1,13 @@
+﻿apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: start-dsp-pipeline
+  namespace: summit-project
+spec:
+  tasks:
+    - name: python-task
+      taskRef:
+        kind: Task
+        name: python-task
+  workspaces:
+    - name: workspace

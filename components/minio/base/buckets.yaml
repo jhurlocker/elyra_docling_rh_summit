@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: minio-bucket-creation
+spec:
+  template:
+    spec:
+      containers:
+      - name: mc
+        image: minio/mc:latest
+        command:
+        - /bin/sh
+        - -c
+        - |
+          mc alias set minio http://minio.minio.svc.cluster.local:9000 minio minio123;
+          mc mb minio/bucket1;
+          mc mb minio/bucket2;
+      restartPolicy: Never
+  backoffLimit: 4

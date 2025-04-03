@@ -1,0 +1,18 @@
+kind: Secret
+apiVersion: v1
+type: Opaque
+metadata:
+  name: minio-data-conn 
+  namespace: summit-project
+  labels:
+    opendatahub.io/dashboard: 'true' 
+    opendatahub.io/managed: 'true'
+  annotations:
+    opendatahub.io/connection-type-ref: s3 
+    openshift.io/display-name: minio-data-conn 
+stringData: 
+  AWS_ACCESS_KEY_ID: minio
+  AWS_DEFAULT_REGION: us-east-1
+  AWS_S3_BUCKET: dsp-pipelines
+  AWS_S3_ENDPOINT: https://minio-api-minio.apps.cluster-fmslm.fmslm.sandbox2375.opentlc.com
+  AWS_SECRET_ACCESS_KEY: minio123

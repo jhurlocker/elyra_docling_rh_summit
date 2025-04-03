@@ -1,0 +1,18 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: el-simple-pipeline-listener
+  namespace: summit-project
+spec:
+  host: el-simple-pipeline-listener-summit-project.apps.cluster-fmslm.fmslm.sandbox2375.opentlc.com
+  path: /
+  to:
+    kind: Service
+    name: el-simple-pipeline-listener
+    weight: 100
+  port:
+    targetPort: https-listener
+  tls:
+    termination: reencrypt
+    insecureEdgeTerminationPolicy: Redirect
+  wildcardPolicy: None

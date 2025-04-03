@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: create-buckets
+  namespace: summit-project 
+spec:
+  selector: {}
+  template:
+    spec:
+      containers:
+        - name: create-buckets
+          image: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-generic-data-science-notebook:2024.1
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: AWS_S3_ENDPOINT
+              value: https://${MINIO_API_URL}
+          command:
+            - /bin/bash
+            - -ec
+            - |-
+              pip uninstall minio -y
+              pip install --no-cache-dir minio
+              python3 /scripts/create-bucket.py
+          volumeMounts:
+            - name: scripts
+              mountPath: /scripts
+      volumes:
+        - name: scripts
+          configMap:
+            name: create-bucket
+      restartPolicy: Never

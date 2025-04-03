@@ -1,0 +1,34 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: create-buckets
+  namespace: summit-project 
+spec:
+  selector: {}
+  template:
+    spec:
+      containers:
+        - name: create-buckets
+          image: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-generic-data-science-notebook:2024.1
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: AWS_S3_ENDPOINT
+              value: https://minio-api-summit-project.apps.cluster-fmslm.fmslm.sandbox2375.opentlc.com
+          command:
+            - /bin/bash
+            - -ec
+            - |-
+              python3 /scripts/create-bucket.py
+          volumeMounts:
+            - name: scripts
+              mountPath: /scripts
+            - name: models
+              mountPath: /models
+      volumes:
+        - name: scripts
+          configMap:
+            name: create-bucket
+        - name: models
+          configMap:
+            name: model-config-file
+      restartPolicy: Never

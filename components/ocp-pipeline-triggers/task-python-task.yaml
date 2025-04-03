@@ -1,0 +1,59 @@
+apiVersion: tekton.dev/v1
+kind: Task
+  name: python-task
+  namespace: summit-project
+spec:
+  steps:
+    - computeResources: {}
+      image: registry.redhat.io/openshift4/ose-cli
+      name: get-token
+      script: |
+        #!/bin/bash
+        BEARER_TOKEN=$(oc whoami -t)
+        DSPA_ENDPOINT=$(oc get routes -n summit-project -o custom-columns=":spec.host" | grep ds-pipeline-dspa)
+        echo "Bearer Token: $BEARER_TOKEN"
+        echo "DSPA_ENDPOINT: $DSPA_ENDPOINT"
+        echo $BEARER_TOKEN > /workspace/bearer_token.txt
+        echo $DSPA_ENDPOINT > /workspace/dspa_endpoint.txt
+    - computeResources: {}
+      image: 'registry.access.redhat.com/ubi8/python-39:latest'
+      name: run-python
+      script: |
+        #!/bin/bash
+        BEARER_TOKEN=$(cat /workspace/bearer_token.txt)
+        DSPA_ENDPOINT=$(cat /workspace/dspa_endpoint.txt)
+
+        pip install --no-cache-dir requests
+
+        python -c "
+        import requests
+        import json
+
+        # Set the Kubeflow API URL and authentication token
+        api_url = 'https://${DSPA_ENDPOINT}/apis/v1beta1/runs'
+        headers = {
+            'Authorization': 'Bearer $BEARER_TOKEN',
+            'Content-Type': 'application/json'
+        }
+
+        # Define the payload to start the pipeline
+        payload = {
+            'name': 'elyra-docling-pipeline',  # The name of the pipeline run
+            'experiment': {
+                'id': 'd89db982-8f5a-427b-9015-7df240823c09'  # Replace with the experiment ID you obtained
+            },
+            'pipeline_spec': {
+                'pipeline_id': '3823630b-f13e-4e99-878e-73bcd8196a40' 
+            }
+        }
+
+        # Make the POST request to trigger the pipeline
+        response = requests.post(api_url, headers=headers, json=payload, timeout=30)
+
+        # Check the response
+        if response.status_code == 200:
+            print('Pipeline run triggered successfully')
+            print(response.json())  # Get details about the pipeline run
+        else:
+            print(f'Error triggering pipeline: {response.status_code} - {response.text}')"
+

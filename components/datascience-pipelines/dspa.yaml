@@ -1,0 +1,41 @@
+apiVersion: datasciencepipelinesapplications.opendatahub.io/v1
+kind: DataSciencePipelinesApplication
+metadata:
+  name: dspa # <1>
+  namespace: summit-project
+spec:
+  apiServer:
+    caBundleFileMountPath: ''
+    caBundleFileName: ''
+    deploy: true
+    enableSamplePipeline: false
+    enableOauth: true
+  database:
+    disableHealthCheck: false
+    mariaDB:
+      deploy: true
+      pipelineDBName: mlpipeline
+      pvcSize: 10Gi
+      username: mlpipeline
+  dspVersion: v2
+  objectStorage:
+    disableHealthCheck: false
+    enableExternalRoute: false
+    externalStorage: # <2>
+      basePath: ''
+      bucket: test-dsp-pipelines
+      host: 'minio-api-minio.apps.cluster-fmslm.fmslm.sandbox2375.opentlc.com'
+      port: ''
+      region: us-east-1
+      s3CredentialsSecret:
+        accessKey: minio
+        secretKey: minio123
+        secretName: miniopipe
+      scheme: https
+  persistenceAgent:
+    deploy: true
+    numWorkers: 2
+  podToPodTLS: true
+  scheduledWorkflow:
+    cronScheduleTimezone: UTC
+    deploy: true

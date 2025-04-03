@@ -1,0 +1,38 @@
+﻿apiVersion: triggers.tekton.dev/v1beta1
+kind: EventListener
+metadata:
+  annotations:
+    service.beta.openshift.io/serving-cert-secret-name: el-simple-pipeline-listener
+  name: simple-pipeline-listener
+  namespace: summit-project
+spec:
+  namespaceSelector: {}
+  resources:
+    kubernetesResource:
+      spec:
+        template:
+          metadata:
+            creationTimestamp: null
+          spec:
+            containers:
+              - env:
+                  - name: TLS_CERT
+                    valueFrom:
+                      secretKeyRef:
+                        key: tls.crt
+                        name: el-simple-pipeline-listener
+                  - name: TLS_KEY
+                    valueFrom:
+                      secretKeyRef:
+                        key: tls.key
+                        name: el-simple-pipeline-listener
+                name: ''
+                resources: {}
+  serviceAccountName: pipeline
+  triggers:
+    - bindings:
+        - kind: TriggerBinding
+          ref: simple-binding
+      name: simple-trigger
+      template:
+        ref: simple-template
