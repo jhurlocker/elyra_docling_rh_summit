@@ -1,7 +1,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: elyra-summit-wrkbnch
+  name: summit-workbench
 spec:
   accessModes:
     - ReadWriteOnce
