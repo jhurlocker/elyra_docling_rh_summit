@@ -1,7 +1,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: elyra-docling-wrkbench
+  name: elyra-summit-wrkbnch
 spec:
   accessModes:
     - ReadWriteOnce

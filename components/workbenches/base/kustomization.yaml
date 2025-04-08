@@ -1,8 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: summit-project
-
 # nameSuffix: -test
 
 labels:
@@ -11,7 +9,6 @@ labels:
     opendatahub.io/dashboard: "true"
 
 resources:
-  - namespace.yaml
-  - jh-elyra-docling-workbench-pvc.yaml
-  - test-wrkbench.yaml
+  - elyra-docling-workbench-pvc.yaml
+  - elyra-docling-workbench.yaml
   - env-config-map.yaml
