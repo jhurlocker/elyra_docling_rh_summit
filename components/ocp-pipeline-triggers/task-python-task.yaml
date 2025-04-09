@@ -26,9 +26,34 @@ spec:
         pip install --no-cache-dir requests
 
         python -c "
+        ### GET PIPELINE ID
         import requests
         import json
 
+        # Replace with the actual URL of your Kubeflow Pipelines API
+        pipe_url = 'https://${DSPA_ENDPOINT}/apis/v2beta1/pipelines/names/elyra-docling-pipeline'
+
+        headers = {
+            'Authorization': 'Bearer $BEARER_TOKEN',
+            'Content-Type': 'application/json'
+        }
+
+        # Send GET request to the API
+        response = requests.get(pipe_url, headers=headers)
+        print(response)
+        
+        # Check if the request was successful
+        if response.status_code == 200:
+        # Parse the response as JSON
+            data = response.json()
+            print(data)
+            pipeline_id = data['pipeline_id']
+            print(pipeline_id)
+        else:
+            print('No pipelines found.')
+
+        ### START DSP RUN
+        print('=== STARTING DSP RUN ===')
         # Set the Kubeflow API URL and authentication token
         api_url = 'https://$DSPA_ENDPOINT/apis/v1beta1/runs'
         headers = {
@@ -43,7 +68,7 @@ spec:
                 'id': 'd89db982-8f5a-427b-9015-7df240823c09'  # Replace with the experiment ID you obtained
             },
             'pipeline_spec': {
-                'pipeline_id': '3823630b-f13e-4e99-878e-73bcd8196a40' 
+                'pipeline_id': pipeline_id
             }
         }
 
