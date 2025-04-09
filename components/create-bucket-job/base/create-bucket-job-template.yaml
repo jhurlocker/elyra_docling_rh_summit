@@ -23,8 +23,13 @@ spec:
           volumeMounts:
             - name: scripts
               mountPath: /scripts
+            - name: model
+              mountPath: /model
       volumes:
         - name: scripts
           configMap:
             name: create-bucket
+        - name: model
+          configMap:
+            name: model-config-file
       restartPolicy: Never

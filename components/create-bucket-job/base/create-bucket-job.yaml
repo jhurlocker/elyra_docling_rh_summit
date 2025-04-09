@@ -12,7 +12,7 @@ spec:
           imagePullPolicy: IfNotPresent
           env:
             - name: AWS_S3_ENDPOINT
-              value: http://minio.summit-project-user1.svc.cluster.local:9000
+              value: http://minio.summit-project-user10.svc.cluster.local:9000
           command:
             - /bin/bash
             - -ec
@@ -23,8 +23,13 @@ spec:
           volumeMounts:
             - name: scripts
               mountPath: /scripts
+            - name: model
+              mountPath: /model
       volumes:
         - name: scripts
           configMap:
             name: create-bucket
+        - name: model
+          configMap:
+            name: model-config-file
       restartPolicy: Never

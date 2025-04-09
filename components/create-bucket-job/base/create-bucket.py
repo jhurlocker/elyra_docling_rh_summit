@@ -47,7 +47,7 @@ def upload_file_to_minio(file_path, bucket_name, object_name=None, endpoint_url=
 
     # If S3 object_name was not specified, use file_path
     if object_name is None:
-        object_name = 'a-model/' + os.path.basename(file_path)
+        object_name = 'granite-model/' + os.path.basename(file_path)
 
     # Create an S3 client
     s3_client = boto3.client('s3',
@@ -66,7 +66,7 @@ def upload_file_to_minio(file_path, bucket_name, object_name=None, endpoint_url=
       return False
 
 # Example usage (replace with your actual values):
-file_path = '/models/IntroToML_Cert.pdf'  # Replace with the path to your file
+file_path = '/model/IntroToML_Cert.pdf'  # Replace with the path to your file
 bucket_name = 'model-bucket' # Replace with your bucket name
 
 #create example file if it doesn't exist.
