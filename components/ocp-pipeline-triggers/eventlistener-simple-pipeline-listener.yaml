@@ -4,7 +4,6 @@ metadata:
   annotations:
     service.beta.openshift.io/serving-cert-secret-name: el-simple-pipeline-listener
   name: simple-pipeline-listener
-  namespace: summit-project
 spec:
   namespaceSelector: {}
   resources:

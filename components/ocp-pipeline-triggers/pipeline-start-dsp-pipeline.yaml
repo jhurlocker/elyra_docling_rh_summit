@@ -2,7 +2,6 @@
 kind: Pipeline
 metadata:
   name: start-dsp-pipeline
-  namespace: summit-project
 spec:
   tasks:
     - name: python-task

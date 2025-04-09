@@ -2,7 +2,6 @@
 kind: TriggerBinding
 metadata:
   name: simple-binding
-  namespace: summit-project
 spec:
   params:
     - name: bucketName

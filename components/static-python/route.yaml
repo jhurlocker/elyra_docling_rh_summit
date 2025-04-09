@@ -1,0 +1,22 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: static-python-dsp
+  labels:
+    app: static-python-dsp
+    app.kubernetes.io/component: static-python-dsp
+    app.kubernetes.io/instance: static-python-dsp
+    app.kubernetes.io/name: static-python-dsp
+    app.openshift.io/runtime-version: latest
+spec:
+  host: static-python-dsp-summit-project-user1.apps.cluster-wlbmv.wlbmv.sandbox2499.opentlc.com
+  to:
+    kind: Service
+    name: static-python-dsp
+    weight: 100
+  port:
+    targetPort: 8080-tcp
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  wildcardPolicy: None

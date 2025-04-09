@@ -1,10 +1,11 @@
-apiVersion: datasciencepipelinesapplications.opendatahub.io/v1alpha1
+apiVersion: datasciencepipelinesapplications.opendatahub.io/v1
 kind: DataSciencePipelinesApplication
 metadata:
-  name: dspa
-  namespace: SUMMIT_PROJECT
+  name: dspa # <1>
 spec:
   apiServer:
+    caBundleFileMountPath: ''
+    caBundleFileName: ''
     deploy: true
     enableSamplePipeline: false
     enableOauth: true
@@ -22,13 +23,13 @@ spec:
     externalStorage:
       basePath: ''
       bucket: pipelines
-      host: 'minio.minio.svc.cluster.local:9000'
+      host: 'minio.${SUMMIT_PROJECT}.svc.cluster.local:9000'
       port: ''
       region: us-east-1
       s3CredentialsSecret:
-        accessKey: minio
-        secretKey: minio123
-        secretName: minio
+        accessKey: AWS_ACCESS_KEY_ID
+        secretKey: AWS_SECRET_ACCESS_KEY
+        secretName: dashboard-dspa-secret
       scheme: http
   persistenceAgent:
     deploy: true

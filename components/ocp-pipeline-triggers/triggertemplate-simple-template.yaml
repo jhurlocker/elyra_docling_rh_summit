@@ -2,7 +2,6 @@
 kind: TriggerTemplate
 metadata:
   name: simple-template
-  namespace: summit-project
 spec:
   resourcetemplates:
     - apiVersion: tekton.dev/v1beta1

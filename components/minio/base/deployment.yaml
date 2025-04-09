@@ -9,7 +9,6 @@ spec:
       app: minio
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: minio
     spec:

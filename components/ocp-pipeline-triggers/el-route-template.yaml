@@ -3,7 +3,7 @@ apiVersion: route.openshift.io/v1
 metadata:
   name: el-simple-pipeline-listener
 spec:
-  host: el-simple-pipeline-listener-summit-project-user1.apps.cluster-wlbmv.wlbmv.sandbox2499.opentlc.com
+  host: el-simple-pipeline-listener-${SUMMIT_PROJECT}.${OCP_APPS_URL}
   path: /
   to:
     kind: Service

@@ -5,7 +5,7 @@ metadata:
     notebooks.opendatahub.io/inject-oauth: "true"
     notebooks.opendatahub.io/last-image-selection: s2i-generic-data-science-notebook:2024.2
     notebooks.opendatahub.io/last-size-selection: Small
-    notebooks.opendatahub.io/oauth-logout-url: https://rhods-dashboard-redhat-ods-applications.apps.cluster-fmslm.fmslm.sandbox2375.opentlc.com/projects/summit-project?notebookLogout=summit-workbench
+    notebooks.opendatahub.io/oauth-logout-url: https://rhods-dashboard-redhat-ods-applications.apps.cluster-wlbmv.wlbmv.sandbox2499.opentlc.com/projects/summit-project-user1?notebookLogout=summit-workbench
     opendatahub.io/accelerator-name: ""
     opendatahub.io/image-display-name: Standard Data Science
     opendatahub.io/username: admin
@@ -17,7 +17,6 @@ metadata:
     opendatahub.io/odh-managed: "true"
     opendatahub.io/user: admin
   name: summit-workbench
-  namespace: summit-project
 spec:
   template:
     spec:
@@ -29,9 +28,9 @@ spec:
             --ServerApp.port=8888
                               --ServerApp.token=''
                               --ServerApp.password=''
-                              --ServerApp.base_url=/notebook/summit-project/summit-workbench
+                              --ServerApp.base_url=/notebook/summit-project-user1/summit-workbench
                               --ServerApp.quit_button=False
-                              --ServerApp.tornado_settings={"user":"admin","hub_host":"https://rhods-dashboard-redhat-ods-applications.apps.cluster-wlbmv.wlbmv.sandbox2499.opentlc.com","hub_prefix":"/projects/summit-project"}
+                              --ServerApp.tornado_settings={"user":"admin","hub_host":"https://rhods-dashboard-redhat-ods-applications.apps.cluster-wlbmv.wlbmv.sandbox2499.opentlc.com/","hub_prefix":"/projects/summit-project-user1"}
         - name: JUPYTER_IMAGE
           value: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-generic-data-science-notebook:2024.2
         - name: REQUESTS_CA_BUNDLE
@@ -52,7 +51,7 @@ spec:
         livenessProbe:
           failureThreshold: 3
           httpGet:
-            path: /notebook/summit-project/summit-workbench/api
+            path: /notebook/summit-project-user1/summit-workbench/api
             port: notebook-port
             scheme: HTTP
           initialDelaySeconds: 10
@@ -67,7 +66,7 @@ spec:
         readinessProbe:
           failureThreshold: 3
           httpGet:
-            path: /notebook/summit-project/summit-workbench/api
+            path: /notebook/summit-project-user1/summit-workbench/api
             port: notebook-port
             scheme: HTTP
           initialDelaySeconds: 10
@@ -107,7 +106,7 @@ spec:
         - --email-domain=*
         - --skip-provider-button
         - --openshift-sar={"verb":"get","resource":"notebooks","resourceAPIGroup":"kubeflow.org","resourceName":"summit-workbench","namespace":"$(NAMESPACE)"}
-        - --logout-url=https://rhods-dashboard-redhat-ods-applications.apps.cluster-fmslm.fmslm.sandbox2375.opentlc.com/projects/summit-project?notebookLogout=summit-workbench
+        - --logout-url=https://rhods-dashboard-redhat-ods-applications.apps.cluster-wlbmv.wlbmv.sandbox2499.opentlc.com/projects/summit-project-user1?notebookLogout=summit-workbench
         env:
         - name: NAMESPACE
           valueFrom:

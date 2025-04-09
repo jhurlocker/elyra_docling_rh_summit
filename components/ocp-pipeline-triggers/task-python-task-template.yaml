@@ -30,7 +30,7 @@ spec:
         import json
 
         # Set the Kubeflow API URL and authentication token
-        api_url = 'https://$DSPA_ENDPOINT/apis/v1beta1/runs'
+        api_url = 'https://${DSPA_ENDPOINT}/apis/v1beta1/runs'
         headers = {
             'Authorization': 'Bearer $BEARER_TOKEN',
             'Content-Type': 'application/json'

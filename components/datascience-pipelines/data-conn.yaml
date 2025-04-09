@@ -3,7 +3,7 @@ apiVersion: v1
 type: Opaque
 metadata:
   name: minio-data-conn 
-  namespace: summit-project
+  namespace: SUMMIT_PROJECT
   labels:
     opendatahub.io/dashboard: 'true' 
     opendatahub.io/managed: 'true'

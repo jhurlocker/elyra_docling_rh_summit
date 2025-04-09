@@ -12,6 +12,5 @@ generatorOptions:
 
 configMapGenerator:
   - name: create-bucket
-    namespace: summit-project 
     files:
       - create-bucket.py

@@ -10,7 +10,7 @@ metadata:
     openshift.io/display-name: elyra-docling-workbench
     notebooks.opendatahub.io/last-image-selection: "s2i-generic-data-science-notebook:2024.2"
   name: elyra-docling-workbench
-  namespace: summit-project
+  namespace: SUMMIT_PROJECT
 spec:
   template:
     spec:
@@ -61,7 +61,7 @@ spec:
 		    - '--email-domain=*'
 		    - '--skip-provider-button'
 		    - '--openshift-sar={"verb":"get","resource":"notebooks","resourceAPIGroup":"kubeflow.org","resourceName":"elyra-docling-workbench","namespace":"$(NAMESPACE)"}'
-		    - '--logout-url=https://rhods-dashboard-redhat-ods-applications.apps.my-cluster.com/projects/summit-project?notebookLogout=elyra-docling-workbench'
+		    - '--logout-url=https://rhods-dashboard-redhat-ods-applications.apps.my-cluster.com/projects/SUMMIT_PROJECT?notebookLogout=elyra-docling-workbench'
 		    - name: JUPYTER_IMAGE
 		      value: "image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-generic-data-science-notebook:2024.2"
           ports:

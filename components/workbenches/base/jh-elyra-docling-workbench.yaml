@@ -4,7 +4,7 @@ metadata:
   annotations:
     notebooks.opendatahub.io/inject-oauth: 'true' 
     opendatahub.io/image-display-name: Standard Data Science
-    notebooks.opendatahub.io/oauth-logout-url: 'https://rhods-dashboard-redhat-ods-applications.apps.my-cluster.com/projects/summit-project?notebookLogout=jh2-elyra-docling-workbench'
+    notebooks.opendatahub.io/oauth-logout-url: 'https://rhods-dashboard-redhat-ods-applications.apps.my-cluster.com/projects/SUMMIT_PROJECT?notebookLogout=jh2-elyra-docling-workbench'
     opendatahub.io/accelerator-name: ''
     openshift.io/description: ''
     openshift.io/display-name: jh2-elyra-docling-workbench
@@ -12,7 +12,7 @@ metadata:
     notebooks.opendatahub.io/last-size-selection: Small
     opendatahub.io/username: 'kube:admin'
   name: jh2-elyra-docling-workbench
-  namespace: summit-project
+  namespace: SUMMIT_PROJECT
 spec:
   template:
     spec:
@@ -30,7 +30,7 @@ spec:
           readinessProbe:
             failureThreshold: 3
             httpGet:
-              path: /notebook/summit-project/jh2-elyra-docling-workbench/api
+              path: /notebook/SUMMIT_PROJECT/jh2-elyra-docling-workbench/api
               port: notebook-port
               scheme: HTTP
             initialDelaySeconds: 10
@@ -40,7 +40,7 @@ spec:
           livenessProbe:
             failureThreshold: 3
             httpGet:
-              path: /notebook/summit-project/jh2-elyra-docling-workbench/api
+              path: /notebook/SUMMIT_PROJECT/jh2-elyra-docling-workbench/api
               port: notebook-port
               scheme: HTTP
             initialDelaySeconds: 10
@@ -53,9 +53,9 @@ spec:
                 --ServerApp.port=8888
                 --ServerApp.token=''
                 --ServerApp.password=''
-                --ServerApp.base_url=/notebook/summit-project/jh2-elyra-docling-workbench
+                --ServerApp.base_url=/notebook/SUMMIT_PROJECT/jh2-elyra-docling-workbench
                 --ServerApp.quit_button=False
-                --ServerApp.tornado_settings={"user":"kube-admin","hub_host":"https://rhods-dashboard-redhat-ods-applications.apps.my-cluster.com", "hub_prefix":"/projects/summit-project"}
+                --ServerApp.tornado_settings={"user":"kube-admin","hub_host":"https://rhods-dashboard-redhat-ods-applications.apps.my-cluster.com", "hub_prefix":"/projects/SUMMIT_PROJECT"}
             - name: JUPYTER_IMAGE
               value: 'image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-generic-data-science-notebook:2024.2'
             - name: PIP_CERT
@@ -141,7 +141,7 @@ spec:
             - '--email-domain=*'
             - '--skip-provider-button'
             - '--openshift-sar={"verb":"get","resource":"notebooks","resourceAPIGroup":"kubeflow.org","resourceName":"jh2-elyra-docling-workbench","namespace":"$(NAMESPACE)"}'
-            - '--logout-url=https://rhods-dashboard-redhat-ods-applications.apps.my-cluster.com/projects/summit-project?notebookLogout=jh2-elyra-docling-workbench'
+            - '--logout-url=https://rhods-dashboard-redhat-ods-applications.apps.my-cluster.com/projects/SUMMIT_PROJECT?notebookLogout=jh2-elyra-docling-workbench'
       enableServiceLinks: false
       serviceAccountName: jh2-elyra-docling-workbench
       volumes:

@@ -1,0 +1,42 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: static-file-python
+  labels:
+    app: static-file-python
+    app.kubernetes.io/component: static-file-python
+    app.kubernetes.io/instance: static-file-python
+    app.kubernetes.io/name: static-file-python
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: static-file-python
+  template:
+    metadata:
+      labels:
+        app: static-file-python
+        deployment: static-file-python
+    spec:
+      containers:
+        - name: static-file-python
+          image: 'quay.io/jhurlocker/static-file-python:latest'
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600

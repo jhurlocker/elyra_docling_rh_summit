@@ -2,7 +2,6 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: create-buckets
-  namespace: summit-project 
 spec:
   selector: {}
   template:
@@ -13,7 +12,7 @@ spec:
           imagePullPolicy: IfNotPresent
           env:
             - name: AWS_S3_ENDPOINT
-              value: https://${MINIO_API_URL}
+              value: http://minio.${SUMMIT_PROJECT}.svc.cluster.local:9000
           command:
             - /bin/bash
             - -ec
