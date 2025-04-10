@@ -15,4 +15,3 @@ resources:
   - routes.yaml
   - secret.yaml
   - service.yaml
-  - buckets.yaml
