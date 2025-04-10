@@ -1,0 +1,30 @@
+kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  annotations:
+    opendatahub.io/notebook-image-desc: A custom Jupyter Notebook built for RH Summit # <1>
+    opendatahub.io/notebook-image-name: docling-elyra-lab-notebook # <2>
+    opendatahub.io/notebook-image-url: 'quay.io/jhurlocker/summit-lab-notebook:latest'
+    opendatahub.io/image-display-name: docling-elyra-lab-notebook
+  name: docling-elyra-lab-notebook
+  namespace: redhat-ods-applications
+  labels: # <3>
+    app.kubernetes.io/created-by: byon
+    opendatahub.io/dashboard: 'true'
+    opendatahub.io/notebook-image: 'true'
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+    - name: '1.0' # <4>
+      annotations:
+        opendatahub.io/notebook-python-dependencies: '[{"name":"PyTorch","version":"2.2"}]' # <5>
+        opendatahub.io/notebook-software: '[{"name":"Python","version":"v3.11"}]' # <6>
+        opendatahub.io/workbench-image-recommended: 'true' # <7>
+      from:
+        kind: DockerImage
+        name: 'quay.io/jhurlocker/summit-lab-notebook:latest' # <8>
+      importPolicy:
+        importMode: Legacy
+      referencePolicy:
+        type: Source
