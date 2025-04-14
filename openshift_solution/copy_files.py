@@ -39,15 +39,20 @@ def download_file_from_s3(bucket_name, object_name, local_file_path, endpoint_ur
         return False
 
 # Example usage:
-object_name = "IntroToML_Cert.pdf"  # Replace with the name of your file
-local_directory = "files" #local directory to save to.
-local_file_path = os.path.join(local_directory, object_name) #combines directory and filename to create the full path.
-bucket_name = "upload-bucket"
-endpoint_url = "https://minio-api-minio.apps.cluster-w8qmq.w8qmq.sandbox219.opentlc.com"  # Replace with your MinIO endpoint
+
+local_directory = "../../instruct-generate/sourcedocs" #local directory to save to.
+local_file_path1 = os.path.join(local_directory, '2304.14953v2-part1.pdf')
+local_file_path2 = os.path.join(local_directory, '2304.14953v2-part2.docx')
+bucket_name = "upload-files"
+endpoint_url = "http://minio.summit-project-user10.svc.cluster.local:9000"  # Replace with your MinIO endpoint
 access_key = "minio"             # Replace with your MinIO access key
 secret_key = "minio123"             # Replace with your MinIO secret key
 
-if download_file_from_s3(bucket_name, object_name, local_file_path, endpoint_url, access_key, secret_key):
+if download_file_from_s3(bucket_name, '2304.14953v2-part1.pdf', local_file_path1, endpoint_url, access_key, secret_key):
+    print("Download complete.")
+else:
+    print("Download failed.")
+if download_file_from_s3(bucket_name, '2304.14953v2-part2.docx', local_file_path2, endpoint_url, access_key, secret_key):
     print("Download complete.")
 else:
     print("Download failed.")

@@ -30,9 +30,9 @@
             "label": "Ingest Files",
             "ui_data": {
               "label": "Ingest Files",
-              "image": "/notebook/summit-project/archie-workbench/static/elyra/python.svg",
-              "x_pos": 78,
-              "y_pos": 92.5,
+              "image": "/notebook/summit-project-user10/summit-workbench/static/elyra/python.svg",
+              "x_pos": 126,
+              "y_pos": 93.5,
               "description": "Run Python script"
             }
           },
@@ -87,7 +87,7 @@
             "label": "HITL Markdown",
             "ui_data": {
               "label": "HITL Markdown",
-              "image": "/notebook/summit-project/archie-workbench/static/elyra/notebook.svg",
+              "image": "/notebook/summit-project-user10/summit-workbench/static/elyra/notebook.svg",
               "x_pos": 148.00003051757812,
               "y_pos": 266.5,
               "description": "Run notebook file"
@@ -151,7 +151,7 @@
             "label": "QNA Generator",
             "ui_data": {
               "label": "QNA Generator",
-              "image": "/notebook/summit-project/archie-workbench/static/elyra/notebook.svg",
+              "image": "/notebook/summit-project-user10/summit-workbench/static/elyra/notebook.svg",
               "x_pos": 405.0000305175781,
               "y_pos": 265.5,
               "description": "Run notebook file"
@@ -215,7 +215,7 @@
             "label": "HITL QNA",
             "ui_data": {
               "label": "HITL QNA",
-              "image": "/notebook/summit-project/archie-workbench/static/elyra/notebook.svg",
+              "image": "/notebook/summit-project-user10/summit-workbench/static/elyra/notebook.svg",
               "x_pos": 661,
               "y_pos": 265.5,
               "description": "Run notebook file"
@@ -279,7 +279,7 @@
             "label": "Combine Markdown",
             "ui_data": {
               "label": "Combine Markdown",
-              "image": "/notebook/summit-project/archie-workbench/static/elyra/python.svg",
+              "image": "/notebook/summit-project-user10/summit-workbench/static/elyra/python.svg",
               "x_pos": 719,
               "y_pos": 92.5,
               "description": "Run Python script"
@@ -301,16 +301,6 @@
                 {
                   "id": "f5380d74-2c54-461d-9986-a574eb68c28d",
                   "node_id_ref": "9da8883d-0641-40ae-8fa3-ac56dcc1fb5b",
-                  "port_id_ref": "outPort"
-                },
-                {
-                  "id": "a6f147fd-9d73-4699-b009-c5ef3dc413c9",
-                  "node_id_ref": "466135c4-0f51-4b31-b1fc-e47d8455dea8",
-                  "port_id_ref": "outPort"
-                },
-                {
-                  "id": "27e339a7-48f0-427b-914d-c0afe70cb617",
-                  "node_id_ref": "85a69801-a0e4-40fd-85d3-84013b65de21",
                   "port_id_ref": "outPort"
                 }
               ]
@@ -355,14 +345,14 @@
               "kubernetes_tolerations": [],
               "mounted_volumes": [],
               "filename": "../../instruct-generate/ingest-summit.ipynb",
-              "runtime_image": "quay.io/modh/runtime-images@sha256:a6e87550d7f932732b8e52c309d356fb76ae0ba0fd0b8566de0ba4ff49c2db84"
+              "runtime_image": "quay.io/modh/runtime-images@sha256:42b70373ec223d1599e3e067caa63ed5fa464a356fa8a996ba1570d8db923346"
             },
-            "label": "PDF Converter",
+            "label": "Docling",
             "ui_data": {
-              "label": "PDF Converter",
-              "image": "/notebook/summit-project/archie-workbench/static/elyra/notebook.svg",
-              "x_pos": 384,
-              "y_pos": 30,
+              "label": "Docling",
+              "image": "/notebook/summit-project-user10/summit-workbench/static/elyra/notebook.svg",
+              "x_pos": 428,
+              "y_pos": 93,
               "description": "Run notebook file"
             }
           },
@@ -381,148 +371,6 @@
               "links": [
                 {
                   "id": "889710a7-9458-41ab-934f-2afa9c0c2d3c",
-                  "node_id_ref": "e4165c2f-c2b3-4415-92b8-a0d36b4b4e69",
-                  "port_id_ref": "outPort"
-                }
-              ]
-            }
-          ],
-          "outputs": [
-            {
-              "id": "outPort",
-              "app_data": {
-                "ui_data": {
-                  "cardinality": {
-                    "min": 0,
-                    "max": -1
-                  },
-                  "label": "Output Port"
-                }
-              }
-            }
-          ]
-        },
-        {
-          "id": "466135c4-0f51-4b31-b1fc-e47d8455dea8",
-          "type": "execution_node",
-          "op": "execute-notebook-node",
-          "app_data": {
-            "component_parameters": {
-              "dependencies": [],
-              "include_subdirectories": false,
-              "outputs": [],
-              "env_vars": [
-                {
-                  "env_var": "API_KEY"
-                },
-                {
-                  "env_var": "LLM_URL"
-                }
-              ],
-              "kubernetes_pod_annotations": [],
-              "kubernetes_pod_labels": [],
-              "kubernetes_secrets": [],
-              "kubernetes_shared_mem_size": {},
-              "kubernetes_tolerations": [],
-              "mounted_volumes": [],
-              "filename": "../../instruct-generate/ingest-summit.ipynb",
-              "runtime_image": "quay.io/modh/runtime-images@sha256:a6e87550d7f932732b8e52c309d356fb76ae0ba0fd0b8566de0ba4ff49c2db84"
-            },
-            "label": "DOCX Converter",
-            "ui_data": {
-              "label": "DOCX Converter",
-              "image": "/notebook/summit-project/archie-workbench/static/elyra/notebook.svg",
-              "x_pos": 385,
-              "y_pos": 91,
-              "description": "Run notebook file"
-            }
-          },
-          "inputs": [
-            {
-              "id": "inPort",
-              "app_data": {
-                "ui_data": {
-                  "cardinality": {
-                    "min": 0,
-                    "max": -1
-                  },
-                  "label": "Input Port"
-                }
-              },
-              "links": [
-                {
-                  "id": "907bfda5-85a7-451a-a305-624584f8c7e7",
-                  "node_id_ref": "e4165c2f-c2b3-4415-92b8-a0d36b4b4e69",
-                  "port_id_ref": "outPort"
-                }
-              ]
-            }
-          ],
-          "outputs": [
-            {
-              "id": "outPort",
-              "app_data": {
-                "ui_data": {
-                  "cardinality": {
-                    "min": 0,
-                    "max": -1
-                  },
-                  "label": "Output Port"
-                }
-              }
-            }
-          ]
-        },
-        {
-          "id": "85a69801-a0e4-40fd-85d3-84013b65de21",
-          "type": "execution_node",
-          "op": "execute-notebook-node",
-          "app_data": {
-            "component_parameters": {
-              "dependencies": [],
-              "include_subdirectories": false,
-              "outputs": [],
-              "env_vars": [
-                {
-                  "env_var": "API_KEY"
-                },
-                {
-                  "env_var": "LLM_URL"
-                }
-              ],
-              "kubernetes_pod_annotations": [],
-              "kubernetes_pod_labels": [],
-              "kubernetes_secrets": [],
-              "kubernetes_shared_mem_size": {},
-              "kubernetes_tolerations": [],
-              "mounted_volumes": [],
-              "filename": "../../instruct-generate/ingest-summit.ipynb",
-              "runtime_image": "quay.io/modh/runtime-images@sha256:a6e87550d7f932732b8e52c309d356fb76ae0ba0fd0b8566de0ba4ff49c2db84"
-            },
-            "label": "CSV Converter",
-            "ui_data": {
-              "label": "CSV Converter",
-              "image": "/notebook/summit-project/archie-workbench/static/elyra/notebook.svg",
-              "x_pos": 385,
-              "y_pos": 146,
-              "description": "Run notebook file"
-            }
-          },
-          "inputs": [
-            {
-              "id": "inPort",
-              "app_data": {
-                "ui_data": {
-                  "cardinality": {
-                    "min": 0,
-                    "max": -1
-                  },
-                  "label": "Input Port"
-                }
-              },
-              "links": [
-                {
-                  "id": "cdbc7240-71a2-442c-8f8a-cd2081d7b82d",
                   "node_id_ref": "e4165c2f-c2b3-4415-92b8-a0d36b4b4e69",
                   "port_id_ref": "outPort"
                 }
