@@ -3,11 +3,11 @@ kind: Notebook
 metadata:
   annotations:
     notebooks.opendatahub.io/inject-oauth: "true"
-    notebooks.opendatahub.io/last-image-selection: docling-elyra-lab-notebook:latest
+    notebooks.opendatahub.io/last-image-selection: s2i-generic-data-science-notebook:2024.2
     notebooks.opendatahub.io/last-size-selection: Small
     notebooks.opendatahub.io/oauth-logout-url: https://${RHOAI_DASHBOARD}/projects/${SUMMIT_PROJECT}?notebookLogout=summit-workbench
     opendatahub.io/accelerator-name: ""
-    opendatahub.io/image-display-name: docling-elyra-lab-notebook
+    opendatahub.io/image-display-name: dStandard Data Science
     opendatahub.io/username: admin
     openshift.io/description: ""
   labels:
@@ -31,7 +31,7 @@ spec:
                               --ServerApp.quit_button=False
                               --ServerApp.tornado_settings={"user":"admin","hub_host":"https://${RHOAI_DASHBOARD}/","hub_prefix":"/projects/${SUMMIT_PROJECT}"}
         - name: JUPYTER_IMAGE
-          value: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/docling-elyra-lab-notebook:1.0
+          value: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-generic-data-science-notebook:2024.2
         - name: REQUESTS_CA_BUNDLE
           value: /etc/pki/tls/custom-certs/ca-bundle.crt
         - name: SSL_CERT_FILE
@@ -45,7 +45,7 @@ spec:
         envFrom:
           - configMapRef:
               name: configmap-summit
-        image: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/docling-elyra-lab-notebook:1.0
+        image: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-generic-data-science-notebook:2024.2
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 3
