@@ -38,7 +38,7 @@ def upload_file_to_minio(file_path, bucket_name, object_name=None, endpoint_url=
       return False
 
 # Example usage (replace with your actual values):
-file_path = 'qna.yaml'  # Replace with the path to your file
+file_path = 'qna-approved.yaml'  # Replace with the path to your file
 bucket_name = 'data-files-bucket' # Replace with your bucket name
 
 #create example file if it doesn't exist.

@@ -33,7 +33,7 @@ def download_file_from_minio(bucket_name, object_name, local_file_path, endpoint
         return False
 
 bucket_name = 'data-files-bucket' 
-object_name = 'my-file3.txt' 
+object_name = 'qna.yaml' 
 local_file_path = 'qna-review-me.yaml' 
 
 if download_file_from_minio(bucket_name, object_name, local_file_path):
