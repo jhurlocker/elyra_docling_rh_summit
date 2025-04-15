@@ -1,9 +1,9 @@
 # Generated markdown files
-file1_name = '../../instruct-generate/resultdocs/2304.14953v2-part1.md'
-file2_name = '../../instruct-generate/resultdocs/2304.14953v2-part2.md'
+file1_name = '/resultdocs/2304.14953v2-part1.md'
+file2_name = '/resultdocs/2304.14953v2-part2.md'
 
 # Combined markdow file
-destination_filename = '../../instruct-generate/resultdocs/combined.md'
+destination_filename = '/resultdocs/combined.md'
 
 # Open the first file in read mode ('r')
 with open(file1_name, 'r') as file1:

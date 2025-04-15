@@ -41,13 +41,13 @@ def download_file_from_s3(bucket_name, object_name, local_file_path, endpoint_ur
 # Example usage:
 
 local_directory = "../../instruct-generate/sourcedocs" #local directory to save to.
-local_file_path1 = os.path.join(local_directory, '2304.14953v2-part1.pdf')
-local_file_path2 = os.path.join(local_directory, '2304.14953v2-part2.docx')
+local_file_path1 = os.path.join('sourcedocs/2304.14953v2-part1.pdf')
+local_file_path2 = os.path.join('sourcedocs/2304.14953v2-part2.docx')
 bucket_name = "upload-files"
 endpoint_url = "http://minio.summit-project-user10.svc.cluster.local:9000"  # Replace with your MinIO endpoint
 access_key = "minio"             # Replace with your MinIO access key
 secret_key = "minio123"             # Replace with your MinIO secret key
-
+      
 if download_file_from_s3(bucket_name, '2304.14953v2-part1.pdf', local_file_path1, endpoint_url, access_key, secret_key):
     print("Download complete.")
 else:
