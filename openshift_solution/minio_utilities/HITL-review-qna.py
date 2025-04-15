@@ -2,7 +2,7 @@ import boto3
 from botocore.exceptions import ClientError
 import os
 
-def download_file_from_minio(bucket_name, object_name, local_file_path, endpoint_url='http://minio.summit-project.svc.cluster.local:9000', access_key='minio', secret_key='minio123'):
+def download_file_from_minio(bucket_name, object_name, local_file_path, endpoint_url='http://minio.summit-project-user10.svc.cluster.local:9000', access_key='minio', secret_key='minio123'):
     """Download a file from an S3 bucket.
 
     Args:
