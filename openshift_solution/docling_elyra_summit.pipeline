@@ -18,7 +18,8 @@
               "include_subdirectories": false,
               "outputs": [
                 "sourcedocs/2304.14953v2-part1.pdf",
-                "sourcedocs/2304.14953v2-part2.docx"
+                "sourcedocs/2304.14953v2-part2.docx",
+                "resultdocs/note.txt"
               ],
               "env_vars": [],
               "kubernetes_pod_annotations": [],
@@ -34,8 +35,8 @@
             "ui_data": {
               "label": "Ingest Files",
               "image": "/notebook/summit-project-user10/jh-workbench/static/elyra/python.svg",
-              "x_pos": 126,
-              "y_pos": 93.5,
+              "x_pos": 132,
+              "y_pos": 94.5,
               "description": "Run Python script"
             }
           },
@@ -268,7 +269,9 @@
             "component_parameters": {
               "dependencies": [],
               "include_subdirectories": false,
-              "outputs": [],
+              "outputs": [
+                "resultdocs/combined.md"
+              ],
               "env_vars": [],
               "kubernetes_pod_annotations": [],
               "kubernetes_pod_labels": [],
@@ -351,7 +354,7 @@
               "kubernetes_tolerations": [],
               "mounted_volumes": [],
               "filename": "../../instruct-generate/ingest-summit.ipynb",
-              "runtime_image": "quay.io/modh/runtime-images@sha256:42b70373ec223d1599e3e067caa63ed5fa464a356fa8a996ba1570d8db923346"
+              "runtime_image": "quay.io/modh/runtime-images@sha256:a6e87550d7f932732b8e52c309d356fb76ae0ba0fd0b8566de0ba4ff49c2db84"
             },
             "label": "Docling",
             "ui_data": {
@@ -376,7 +379,7 @@
               },
               "links": [
                 {
-                  "id": "889710a7-9458-41ab-934f-2afa9c0c2d3c",
+                  "id": "ffb15261-3f62-430f-9205-7ecc9dcc86ad",
                   "node_id_ref": "e4165c2f-c2b3-4415-92b8-a0d36b4b4e69",
                   "port_id_ref": "outPort"
                 }
