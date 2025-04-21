@@ -30,6 +30,7 @@ oc apply -k ./components/create-bucket-job/base
 OpenShift AI workbench
 envsubst < components/workbenches/base/env-config-map-template.yaml > components/workbenches/base/env-config-map.yaml
 oc apply -f components/workbenches/base/custom-notebook.yaml
+envsubst < components/datascience-pipelines/secret-dashboard-dspa-secret-template.yaml > components/datascience-pipelines/secret-dashboard-dspa-secret.yaml
 oc apply -f components/datascience-pipelines/secret-dashboard-dspa-secret.yaml
 envsubst < components/datascience-pipelines/dspa-template.yaml > components/datascience-pipelines/dspa.yaml
 oc apply -f components/datascience-pipelines/dspa.yaml
