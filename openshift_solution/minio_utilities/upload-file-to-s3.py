@@ -2,7 +2,7 @@ import boto3
 from botocore.exceptions import ClientError
 import os
 
-def upload_file_to_minio(file_path, bucket_name, object_name=None, endpoint_url='http://minio.summit-project-user10.svc.cluster.local:9000', access_key='minio', secret_key='minio123'):
+def upload_file_to_minio(file_path, bucket_name, object_name=None, endpoint_url= os.environ.get('minio-url'), access_key='minio', secret_key='minio123'):
     """Upload a file to an S3 bucket.
 
     Args:
@@ -38,15 +38,18 @@ def upload_file_to_minio(file_path, bucket_name, object_name=None, endpoint_url=
       return False
 
 # Example usage (replace with your actual values):
-file_path = '../files/IntroToML_Cert.pdf'  # Replace with the path to your file
+file_path = '../files/2304.14953v2-part1.pdf'  # Replace with the path to your file
+file_path2 = '../files/2304.14953v2-part2.docx'
 bucket_name = 'upload-files' # Replace with your bucket name
-
-#create example file if it doesn't exist.
-if not os.path.exists(file_path):
-    with open(file_path, "w") as f:
-        f.write("This is an example file.")
+minio_url = os.environ.get('minio-url')
+print(minio_url)
 
 if upload_file_to_minio(file_path, bucket_name):
+    print("Upload of PDF file successful! Data Science Pipeline should be starting.")
+else:
+    print("Upload failed.")
+
+if upload_file_to_minio(file_path2, bucket_name):
     print("Upload of PDF file successful! Data Science Pipeline should be starting.")
 else:
     print("Upload failed.")
