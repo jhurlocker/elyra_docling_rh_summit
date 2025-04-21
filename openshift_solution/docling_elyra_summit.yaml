@@ -1,0 +1,428 @@
+# PIPELINE DEFINITION
+# Name: docling-elyra-summit
+components:
+  comp-run-a-file:
+    executorLabel: exec-run-a-file
+  comp-run-a-file-2:
+    executorLabel: exec-run-a-file-2
+  comp-run-a-file-3:
+    executorLabel: exec-run-a-file-3
+  comp-run-a-file-4:
+    executorLabel: exec-run-a-file-4
+  comp-run-a-file-5:
+    executorLabel: exec-run-a-file-5
+  comp-run-a-file-6:
+    executorLabel: exec-run-a-file-6
+deploymentSpec:
+  executors:
+    exec-run-a-file:
+      container:
+        args:
+        - 'sh -c "mkdir -p ./jupyter-work-dir && cd ./jupyter-work-dir"
+
+          sh -c "[[ -e ''/opt/app-root/bin/utils/bootstrapper.py'' ]] && (echo ''bootstrapper.py
+          file already exists''; cp ''/opt/app-root/bin/utils/bootstrapper.py'' .)
+          || (echo ''Downloading https://raw.githubusercontent.com/opendatahub-io/elyra/v4.2.0/elyra/kfp/bootstrapper.py'';
+          curl --fail -H ''Cache-Control: no-cache'' -L ''https://raw.githubusercontent.com/opendatahub-io/elyra/v4.2.0/elyra/kfp/bootstrapper.py''
+          --output bootstrapper.py)"
+
+          sh -c "[[ -e ''/opt/app-root/bin/utils/requirements-elyra.txt'' ]] && (echo
+          ''requirements-elyra.txt file already exists''; cp ''/opt/app-root/bin/utils/requirements-elyra.txt''
+          .) || (echo ''Downloading https://raw.githubusercontent.com/opendatahub-io/elyra/v4.2.0/etc/generic/requirements-elyra.txt'';
+          curl --fail -H ''Cache-Control: no-cache'' -L ''https://raw.githubusercontent.com/opendatahub-io/elyra/v4.2.0/etc/generic/requirements-elyra.txt''
+          --output requirements-elyra.txt)"
+
+          sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt
+          && python3 bootstrapper.py --pipeline-name ''docling_elyra_summit'' --cos-endpoint
+          ''http://minio.summit-project-user1.svc.cluster.local:9000'' --cos-bucket
+          ''pipelines'' --cos-directory ''docling_elyra_summit-0421041141'' --cos-dependencies-archive
+          ''copy_files-e4165c2f-c2b3-4415-92b8-a0d36b4b4e69.tar.gz'' --file ''elyra_docling_rh_summit/openshift_solution/copy_files.py''
+          --outputs ''sourcedocs/2304.14953v2-part1.pdf;sourcedocs/2304.14953v2-part2.docx;resultdocs/note.txt''
+          "
+
+          '
+        command:
+        - sh
+        - -c
+        env:
+        - name: ELYRA_RUNTIME_ENV
+          value: kfp
+        - name: ELYRA_ENABLE_PIPELINE_INFO
+          value: 'True'
+        - name: ELYRA_WRITABLE_CONTAINER_DIR
+          value: /tmp
+        - name: ELYRA_RUN_NAME
+          value: '{{workflow.uid}}'
+        image: quay.io/modh/runtime-images@sha256:a6e87550d7f932732b8e52c309d356fb76ae0ba0fd0b8566de0ba4ff49c2db84
+    exec-run-a-file-2:
+      container:
+        args:
+        - 'sh -c "mkdir -p ./jupyter-work-dir && cd ./jupyter-work-dir"
+
+          sh -c "[[ -e ''/opt/app-root/bin/utils/bootstrapper.py'' ]] && (echo ''bootstrapper.py
+          file already exists''; cp ''/opt/app-root/bin/utils/bootstrapper.py'' .)
+          || (echo ''Downloading https://raw.githubusercontent.com/opendatahub-io/elyra/v4.2.0/elyra/kfp/bootstrapper.py'';
+          curl --fail -H ''Cache-Control: no-cache'' -L ''https://raw.githubusercontent.com/opendatahub-io/elyra/v4.2.0/elyra/kfp/bootstrapper.py''
+          --output bootstrapper.py)"
+
+          sh -c "[[ -e ''/opt/app-root/bin/utils/requirements-elyra.txt'' ]] && (echo
+          ''requirements-elyra.txt file already exists''; cp ''/opt/app-root/bin/utils/requirements-elyra.txt''
+          .) || (echo ''Downloading https://raw.githubusercontent.com/opendatahub-io/elyra/v4.2.0/etc/generic/requirements-elyra.txt'';
+          curl --fail -H ''Cache-Control: no-cache'' -L ''https://raw.githubusercontent.com/opendatahub-io/elyra/v4.2.0/etc/generic/requirements-elyra.txt''
+          --output requirements-elyra.txt)"
+
+          sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt
+          && python3 bootstrapper.py --pipeline-name ''docling_elyra_summit'' --cos-endpoint
+          ''http://minio.summit-project-user1.svc.cluster.local:9000'' --cos-bucket
+          ''pipelines'' --cos-directory ''docling_elyra_summit-0421041141'' --cos-dependencies-archive
+          ''ingest-summit-9da8883d-0641-40ae-8fa3-ac56dcc1fb5b.tar.gz'' --file ''instruct-generate/ingest-summit.ipynb''
+          --inputs ''sourcedocs/2304.14953v2-part1.pdf;sourcedocs/2304.14953v2-part2.docx;resultdocs/note.txt''
+          --outputs ''resultdocs/2304.14953v2-part1.md;resultdocs/2304.14953v2-part2.md''
+          "
+
+          '
+        command:
+        - sh
+        - -c
+        env:
+        - name: ELYRA_RUNTIME_ENV
+          value: kfp
+        - name: ELYRA_ENABLE_PIPELINE_INFO
+          value: 'True'
+        - name: ELYRA_WRITABLE_CONTAINER_DIR
+          value: /tmp
+        - name: ELYRA_RUN_NAME
+          value: '{{workflow.uid}}'
+        image: quay.io/modh/runtime-images@sha256:a6e87550d7f932732b8e52c309d356fb76ae0ba0fd0b8566de0ba4ff49c2db84
+    exec-run-a-file-3:
+      container:
+        args:
+        - 'sh -c "mkdir -p ./jupyter-work-dir && cd ./jupyter-work-dir"
+
+          sh -c "[[ -e ''/opt/app-root/bin/utils/bootstrapper.py'' ]] && (echo ''bootstrapper.py
+          file already exists''; cp ''/opt/app-root/bin/utils/bootstrapper.py'' .)
+          || (echo ''Downloading https://raw.githubusercontent.com/opendatahub-io/elyra/v4.2.0/elyra/kfp/bootstrapper.py'';
+          curl --fail -H ''Cache-Control: no-cache'' -L ''https://raw.githubusercontent.com/opendatahub-io/elyra/v4.2.0/elyra/kfp/bootstrapper.py''
+          --output bootstrapper.py)"
+
+          sh -c "[[ -e ''/opt/app-root/bin/utils/requirements-elyra.txt'' ]] && (echo
+          ''requirements-elyra.txt file already exists''; cp ''/opt/app-root/bin/utils/requirements-elyra.txt''
+          .) || (echo ''Downloading https://raw.githubusercontent.com/opendatahub-io/elyra/v4.2.0/etc/generic/requirements-elyra.txt'';
+          curl --fail -H ''Cache-Control: no-cache'' -L ''https://raw.githubusercontent.com/opendatahub-io/elyra/v4.2.0/etc/generic/requirements-elyra.txt''
+          --output requirements-elyra.txt)"
+
+          sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt
+          && python3 bootstrapper.py --pipeline-name ''docling_elyra_summit'' --cos-endpoint
+          ''http://minio.summit-project-user1.svc.cluster.local:9000'' --cos-bucket
+          ''pipelines'' --cos-directory ''docling_elyra_summit-0421041141'' --cos-dependencies-archive
+          ''combine_markdown-db01761f-d8d8-4a07-907c-f4af071227c6.tar.gz'' --file
+          ''elyra_docling_rh_summit/openshift_solution/combine_markdown.py'' --inputs
+          ''resultdocs/note.txt;sourcedocs/2304.14953v2-part1.pdf;resultdocs/2304.14953v2-part2.md;resultdocs/2304.14953v2-part1.md;sourcedocs/2304.14953v2-part2.docx''
+          --outputs ''resultdocs/combined.md'' "
+
+          '
+        command:
+        - sh
+        - -c
+        env:
+        - name: ELYRA_RUNTIME_ENV
+          value: kfp
+        - name: ELYRA_ENABLE_PIPELINE_INFO
+          value: 'True'
+        - name: ELYRA_WRITABLE_CONTAINER_DIR
+          value: /tmp
+        - name: ELYRA_RUN_NAME
+          value: '{{workflow.uid}}'
+        image: quay.io/modh/runtime-images@sha256:a6e87550d7f932732b8e52c309d356fb76ae0ba0fd0b8566de0ba4ff49c2db84
+    exec-run-a-file-4:
+      container:
+        args:
+        - 'sh -c "mkdir -p ./jupyter-work-dir && cd ./jupyter-work-dir"
+
+          sh -c "[[ -e ''/opt/app-root/bin/utils/bootstrapper.py'' ]] && (echo ''bootstrapper.py
+          file already exists''; cp ''/opt/app-root/bin/utils/bootstrapper.py'' .)
+          || (echo ''Downloading https://raw.githubusercontent.com/opendatahub-io/elyra/v4.2.0/elyra/kfp/bootstrapper.py'';
+          curl --fail -H ''Cache-Control: no-cache'' -L ''https://raw.githubusercontent.com/opendatahub-io/elyra/v4.2.0/elyra/kfp/bootstrapper.py''
+          --output bootstrapper.py)"
+
+          sh -c "[[ -e ''/opt/app-root/bin/utils/requirements-elyra.txt'' ]] && (echo
+          ''requirements-elyra.txt file already exists''; cp ''/opt/app-root/bin/utils/requirements-elyra.txt''
+          .) || (echo ''Downloading https://raw.githubusercontent.com/opendatahub-io/elyra/v4.2.0/etc/generic/requirements-elyra.txt'';
+          curl --fail -H ''Cache-Control: no-cache'' -L ''https://raw.githubusercontent.com/opendatahub-io/elyra/v4.2.0/etc/generic/requirements-elyra.txt''
+          --output requirements-elyra.txt)"
+
+          sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt
+          && python3 bootstrapper.py --pipeline-name ''docling_elyra_summit'' --cos-endpoint
+          ''http://minio.summit-project-user1.svc.cluster.local:9000'' --cos-bucket
+          ''pipelines'' --cos-directory ''docling_elyra_summit-0421041141'' --cos-dependencies-archive
+          ''HITL_MarkdownReview-e91d428b-1397-4f77-9514-3f29be067bcd.tar.gz'' --file
+          ''elyra_docling_rh_summit/openshift_solution/HITL_MarkdownReview.ipynb''
+          --inputs ''resultdocs/note.txt;sourcedocs/2304.14953v2-part1.pdf;resultdocs/2304.14953v2-part2.md;resultdocs/combined.md;resultdocs/2304.14953v2-part1.md;sourcedocs/2304.14953v2-part2.docx''
+          "
+
+          '
+        command:
+        - sh
+        - -c
+        env:
+        - name: ELYRA_RUNTIME_ENV
+          value: kfp
+        - name: ELYRA_ENABLE_PIPELINE_INFO
+          value: 'True'
+        - name: ELYRA_WRITABLE_CONTAINER_DIR
+          value: /tmp
+        - name: ELYRA_RUN_NAME
+          value: '{{workflow.uid}}'
+        image: quay.io/modh/runtime-images@sha256:a6e87550d7f932732b8e52c309d356fb76ae0ba0fd0b8566de0ba4ff49c2db84
+    exec-run-a-file-5:
+      container:
+        args:
+        - 'sh -c "mkdir -p ./jupyter-work-dir && cd ./jupyter-work-dir"
+
+          sh -c "[[ -e ''/opt/app-root/bin/utils/bootstrapper.py'' ]] && (echo ''bootstrapper.py
+          file already exists''; cp ''/opt/app-root/bin/utils/bootstrapper.py'' .)
+          || (echo ''Downloading https://raw.githubusercontent.com/opendatahub-io/elyra/v4.2.0/elyra/kfp/bootstrapper.py'';
+          curl --fail -H ''Cache-Control: no-cache'' -L ''https://raw.githubusercontent.com/opendatahub-io/elyra/v4.2.0/elyra/kfp/bootstrapper.py''
+          --output bootstrapper.py)"
+
+          sh -c "[[ -e ''/opt/app-root/bin/utils/requirements-elyra.txt'' ]] && (echo
+          ''requirements-elyra.txt file already exists''; cp ''/opt/app-root/bin/utils/requirements-elyra.txt''
+          .) || (echo ''Downloading https://raw.githubusercontent.com/opendatahub-io/elyra/v4.2.0/etc/generic/requirements-elyra.txt'';
+          curl --fail -H ''Cache-Control: no-cache'' -L ''https://raw.githubusercontent.com/opendatahub-io/elyra/v4.2.0/etc/generic/requirements-elyra.txt''
+          --output requirements-elyra.txt)"
+
+          sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt
+          && python3 bootstrapper.py --pipeline-name ''docling_elyra_summit'' --cos-endpoint
+          ''http://minio.summit-project-user1.svc.cluster.local:9000'' --cos-bucket
+          ''pipelines'' --cos-directory ''docling_elyra_summit-0421041141'' --cos-dependencies-archive
+          ''injest-splitter-8a30ef71-5ae7-4c47-b3b9-e1c583ed99fe.tar.gz'' --file ''instruct-generate/injest-splitter.ipynb''
+          --inputs ''resultdocs/note.txt;sourcedocs/2304.14953v2-part1.pdf;resultdocs/2304.14953v2-part2.md;resultdocs/combined.md;resultdocs/2304.14953v2-part1.md;sourcedocs/2304.14953v2-part2.docx''
+          "
+
+          '
+        command:
+        - sh
+        - -c
+        env:
+        - name: ELYRA_RUNTIME_ENV
+          value: kfp
+        - name: ELYRA_ENABLE_PIPELINE_INFO
+          value: 'True'
+        - name: ELYRA_WRITABLE_CONTAINER_DIR
+          value: /tmp
+        - name: ELYRA_RUN_NAME
+          value: '{{workflow.uid}}'
+        image: quay.io/modh/runtime-images@sha256:a6e87550d7f932732b8e52c309d356fb76ae0ba0fd0b8566de0ba4ff49c2db84
+    exec-run-a-file-6:
+      container:
+        args:
+        - 'sh -c "mkdir -p ./jupyter-work-dir && cd ./jupyter-work-dir"
+
+          sh -c "[[ -e ''/opt/app-root/bin/utils/bootstrapper.py'' ]] && (echo ''bootstrapper.py
+          file already exists''; cp ''/opt/app-root/bin/utils/bootstrapper.py'' .)
+          || (echo ''Downloading https://raw.githubusercontent.com/opendatahub-io/elyra/v4.2.0/elyra/kfp/bootstrapper.py'';
+          curl --fail -H ''Cache-Control: no-cache'' -L ''https://raw.githubusercontent.com/opendatahub-io/elyra/v4.2.0/elyra/kfp/bootstrapper.py''
+          --output bootstrapper.py)"
+
+          sh -c "[[ -e ''/opt/app-root/bin/utils/requirements-elyra.txt'' ]] && (echo
+          ''requirements-elyra.txt file already exists''; cp ''/opt/app-root/bin/utils/requirements-elyra.txt''
+          .) || (echo ''Downloading https://raw.githubusercontent.com/opendatahub-io/elyra/v4.2.0/etc/generic/requirements-elyra.txt'';
+          curl --fail -H ''Cache-Control: no-cache'' -L ''https://raw.githubusercontent.com/opendatahub-io/elyra/v4.2.0/etc/generic/requirements-elyra.txt''
+          --output requirements-elyra.txt)"
+
+          sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt
+          && python3 bootstrapper.py --pipeline-name ''docling_elyra_summit'' --cos-endpoint
+          ''http://minio.summit-project-user1.svc.cluster.local:9000'' --cos-bucket
+          ''pipelines'' --cos-directory ''docling_elyra_summit-0421041141'' --cos-dependencies-archive
+          ''HITL_qna_review-b816de19-69a2-4660-a2af-ca808be3581a.tar.gz'' --file ''elyra_docling_rh_summit/openshift_solution/HITL_qna_review.ipynb''
+          --inputs ''resultdocs/note.txt;sourcedocs/2304.14953v2-part1.pdf;resultdocs/2304.14953v2-part2.md;resultdocs/combined.md;resultdocs/2304.14953v2-part1.md;sourcedocs/2304.14953v2-part2.docx''
+          "
+
+          '
+        command:
+        - sh
+        - -c
+        env:
+        - name: ELYRA_RUNTIME_ENV
+          value: kfp
+        - name: ELYRA_ENABLE_PIPELINE_INFO
+          value: 'True'
+        - name: ELYRA_WRITABLE_CONTAINER_DIR
+          value: /tmp
+        - name: ELYRA_RUN_NAME
+          value: '{{workflow.uid}}'
+        image: quay.io/modh/runtime-images@sha256:a6e87550d7f932732b8e52c309d356fb76ae0ba0fd0b8566de0ba4ff49c2db84
+pipelineInfo:
+  name: docling-elyra-summit
+root:
+  dag:
+    tasks:
+      run-a-file:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-run-a-file
+        taskInfo:
+          name: Ingest Files
+      run-a-file-2:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-run-a-file-2
+        dependentTasks:
+        - run-a-file
+        taskInfo:
+          name: Docling
+      run-a-file-3:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-run-a-file-3
+        dependentTasks:
+        - run-a-file-2
+        taskInfo:
+          name: Combine Markdown
+      run-a-file-4:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-run-a-file-4
+        dependentTasks:
+        - run-a-file-3
+        taskInfo:
+          name: HITL Markdown
+      run-a-file-5:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-run-a-file-5
+        dependentTasks:
+        - run-a-file-4
+        taskInfo:
+          name: QNA Generator
+      run-a-file-6:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-run-a-file-6
+        dependentTasks:
+        - run-a-file-5
+        taskInfo:
+          name: HITL QNA
+schemaVersion: 2.1.0
+sdkVersion: kfp-2.9.0
+---
+platforms:
+  kubernetes:
+    deploymentSpec:
+      executors:
+        exec-run-a-file:
+          podMetadata:
+            annotations:
+              elyra/node-file-name: elyra_docling_rh_summit/openshift_solution/copy_files.py
+              elyra/pipeline-source: docling_elyra_summit.pipeline
+            labels:
+              elyra/experiment-name: ''
+              elyra/node-name: Ingest_Files
+              elyra/node-type: notebook-script
+              elyra/pipeline-name: docling_elyra_summit
+              elyra/pipeline-version: ''
+          secretAsEnv:
+          - keyToEnv:
+            - envVar: AWS_ACCESS_KEY_ID
+              secretKey: AWS_ACCESS_KEY_ID
+            - envVar: AWS_SECRET_ACCESS_KEY
+              secretKey: AWS_SECRET_ACCESS_KEY
+            secretName: minioconnection
+        exec-run-a-file-2:
+          podMetadata:
+            annotations:
+              elyra/node-file-name: instruct-generate/ingest-summit.ipynb
+              elyra/pipeline-source: docling_elyra_summit.pipeline
+            labels:
+              elyra/experiment-name: ''
+              elyra/node-name: Docling
+              elyra/node-type: notebook-script
+              elyra/pipeline-name: docling_elyra_summit
+              elyra/pipeline-version: ''
+          secretAsEnv:
+          - keyToEnv:
+            - envVar: AWS_ACCESS_KEY_ID
+              secretKey: AWS_ACCESS_KEY_ID
+            - envVar: AWS_SECRET_ACCESS_KEY
+              secretKey: AWS_SECRET_ACCESS_KEY
+            secretName: minioconnection
+        exec-run-a-file-3:
+          podMetadata:
+            annotations:
+              elyra/node-file-name: elyra_docling_rh_summit/openshift_solution/combine_markdown.py
+              elyra/pipeline-source: docling_elyra_summit.pipeline
+            labels:
+              elyra/experiment-name: ''
+              elyra/node-name: Combine_Markdown
+              elyra/node-type: notebook-script
+              elyra/pipeline-name: docling_elyra_summit
+              elyra/pipeline-version: ''
+          secretAsEnv:
+          - keyToEnv:
+            - envVar: AWS_ACCESS_KEY_ID
+              secretKey: AWS_ACCESS_KEY_ID
+            - envVar: AWS_SECRET_ACCESS_KEY
+              secretKey: AWS_SECRET_ACCESS_KEY
+            secretName: minioconnection
+        exec-run-a-file-4:
+          podMetadata:
+            annotations:
+              elyra/node-file-name: elyra_docling_rh_summit/openshift_solution/HITL_MarkdownReview.ipynb
+              elyra/node-user-doc: '**H**uman **I**n **T**he **L**oop step'
+              elyra/pipeline-source: docling_elyra_summit.pipeline
+            labels:
+              elyra/experiment-name: ''
+              elyra/node-name: HITL_Markdown
+              elyra/node-type: notebook-script
+              elyra/pipeline-name: docling_elyra_summit
+              elyra/pipeline-version: ''
+          secretAsEnv:
+          - keyToEnv:
+            - envVar: AWS_ACCESS_KEY_ID
+              secretKey: AWS_ACCESS_KEY_ID
+            - envVar: AWS_SECRET_ACCESS_KEY
+              secretKey: AWS_SECRET_ACCESS_KEY
+            secretName: minioconnection
+        exec-run-a-file-5:
+          podMetadata:
+            annotations:
+              elyra/node-file-name: instruct-generate/injest-splitter.ipynb
+              elyra/pipeline-source: docling_elyra_summit.pipeline
+            labels:
+              elyra/experiment-name: ''
+              elyra/node-name: QNA_Generator
+              elyra/node-type: notebook-script
+              elyra/pipeline-name: docling_elyra_summit
+              elyra/pipeline-version: ''
+          secretAsEnv:
+          - keyToEnv:
+            - envVar: AWS_ACCESS_KEY_ID
+              secretKey: AWS_ACCESS_KEY_ID
+            - envVar: AWS_SECRET_ACCESS_KEY
+              secretKey: AWS_SECRET_ACCESS_KEY
+            secretName: minioconnection
+        exec-run-a-file-6:
+          podMetadata:
+            annotations:
+              elyra/node-file-name: elyra_docling_rh_summit/openshift_solution/HITL_qna_review.ipynb
+              elyra/node-user-doc: '**H**uman **I**n **T**he **L**oop step'
+              elyra/pipeline-source: docling_elyra_summit.pipeline
+            labels:
+              elyra/experiment-name: ''
+              elyra/node-name: HITL_QNA
+              elyra/node-type: notebook-script
+              elyra/pipeline-name: docling_elyra_summit
+              elyra/pipeline-version: ''
+          secretAsEnv:
+          - keyToEnv:
+            - envVar: AWS_ACCESS_KEY_ID
+              secretKey: AWS_ACCESS_KEY_ID
+            - envVar: AWS_SECRET_ACCESS_KEY
+              secretKey: AWS_SECRET_ACCESS_KEY
+            secretName: minioconnection
