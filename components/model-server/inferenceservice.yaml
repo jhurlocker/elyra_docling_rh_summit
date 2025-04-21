@@ -29,8 +29,8 @@ spec:
           nvidia.com/gpu: "1"
       runtime: granite2b
       storage:
-        key: granite-model
-        path: granite-3.3-2b-instruct
+        key: granite-model-new
+        path: model
     tolerations:
     - effect: NoSchedule
       key: nvidia.com/gpu

@@ -26,8 +26,40 @@ spec:
         pip install --no-cache-dir requests
 
         python -c "
+        
+        ### GET PIPELINE ID
         import requests
         import json
+
+        # Replace with the actual URL of your Kubeflow Pipelines API
+        pipe_url = 'https://${DSPA_ENDPOINT}/apis/v2beta1/pipelines'
+
+        headers = {
+            'Authorization': 'Bearer $BEARER_TOKEN',
+            'Content-Type': 'application/json'
+        }
+
+        # Send GET request to the API
+        response = requests.get(pipe_url, headers=headers)
+        print(response)
+        # Check if the request was successful
+        if response.status_code == 200:
+        # Parse the response as JSON
+            data = response.json()
+        print(data)
+        pipeline_id = data['pipelines'][0]['pipeline_id']
+        print({pipeline_id})
+        # Extract the pipeline_id from the first pipeline (if pipelines exist)
+        if data['pipelines']:
+            pipeline_id = data['pipelines'][0]['pipeline_id']
+            #print(f'PIPELINE ID: {pipeline_id}'')
+            #print(f"Pipeline ID: {pipeline_id}")
+        else:
+            print('No pipelines found.')
+        else:
+            print(f'Failed to fetch pipelines: {response.status_code}')
+
+        ### START DSP RUN
 
         # Set the Kubeflow API URL and authentication token
         api_url = 'https://${DSPA_ENDPOINT}/apis/v1beta1/runs'

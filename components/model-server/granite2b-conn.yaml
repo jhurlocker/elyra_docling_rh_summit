@@ -1,0 +1,20 @@
+kind: Secret
+apiVersion: v1
+metadata:
+  name: granite-model-new
+  namespace: granite-model-project
+  labels:
+    opendatahub.io/dashboard: 'true'
+    opendatahub.io/managed: 'true'
+  annotations:
+    opendatahub.io/connection-type: s3
+    opendatahub.io/connection-type-ref: s3
+    openshift.io/description: ''
+    openshift.io/display-name: granite-model-new
+data:
+  AWS_ACCESS_KEY_ID: bWluaW8=
+  AWS_DEFAULT_REGION: dXMtZWFzdC0x
+  AWS_S3_BUCKET: bW9kZWwtYnVja2V0
+  AWS_S3_ENDPOINT: aHR0cDovL21pbmlvLmdyYW5pdGUtbW9kZWwtcHJvamVjdC5zdmMuY2x1c3Rlci5sb2NhbDo5MDAw
+  AWS_SECRET_ACCESS_KEY: bWluaW8xMjM=
+type: Opaque
