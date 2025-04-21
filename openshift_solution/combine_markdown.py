@@ -26,7 +26,7 @@ import boto3
 from botocore.exceptions import ClientError
 import os
 
-def upload_file_to_minio(file_path, bucket_name, object_name=None, endpoint_url='http://minio.summit-project-user10.svc.cluster.local:9000', access_key='minio', secret_key='minio123'):
+def upload_file_to_minio(file_path, bucket_name, object_name=None, endpoint_url=os.environ.get('minio-url'), access_key='minio', secret_key='minio123'):
     """Upload a file to an S3 bucket.
 
     Args:
