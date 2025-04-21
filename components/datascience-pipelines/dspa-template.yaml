@@ -29,7 +29,7 @@ spec:
       s3CredentialsSecret:
         accessKey: AWS_ACCESS_KEY_ID
         secretKey: AWS_SECRET_ACCESS_KEY
-        secretName: ds-pipeline-config
+        secretName: minioconnection
       scheme: http
   persistenceAgent:
     deploy: true
