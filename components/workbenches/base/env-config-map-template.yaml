@@ -5,4 +5,4 @@ metadata:
   labels:
     opendatahub.io/dashboard: 'true'
 data:
-  mino-url: '${MINIO_API_URL}'
+  minio-url: 'http://minio.${SUMMIT_PROJECT}.svc.cluster.local:9000'
