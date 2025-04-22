@@ -10,7 +10,6 @@ OpenShift AI Single Serving runtime
 oc apply -k components/openshift-servicemesh/operator/overlays/stable
 oc apply -k components/openshift-serverless/operator/overlays/stable
 oc apply -k components/model-server/components-serving
-oc apply -f components/serving-runtime/vllm-cpu-runtime-template.yaml
 
 OpenShift Pipelines
 oc apply -k components/openshift-pipelines/operator/overlays/latest/
