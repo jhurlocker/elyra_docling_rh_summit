@@ -35,7 +35,7 @@ def upload_folder_to_s3(local_folder, bucket_name, s3_folder='model'):
             #     return
             # except Exception as e:
             #     print(f"An error occurred during upload: {e}")
-                return
+            # return
 
 if __name__ == "__main__":
     local_folder_to_upload = 'model'  # Replace with the actual path to your local folder
