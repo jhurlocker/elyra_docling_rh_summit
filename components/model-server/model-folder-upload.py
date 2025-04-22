@@ -28,13 +28,13 @@ def upload_folder_to_s3(local_folder, bucket_name, s3_folder='model'):
             try:
                 s3.upload_file(local_path, bucket_name, s3_key)
                 print(f"Uploaded {local_path} to s3://{bucket_name}/{s3_key}")
-            except FileNotFoundError:
-                print(f"Error: File not found at {local_path}")
-            except NoCredentialsError:
-                print("Error: AWS credentials not found. Please configure your AWS credentials.")
-                return
-            except Exception as e:
-                print(f"An error occurred during upload: {e}")
+            # except FileNotFoundError:
+            #     print(f"Error: File not found at {local_path}")
+            # except NoCredentialsError:
+            #     print("Error: AWS credentials not found. Please configure your AWS credentials.")
+            #     return
+            # except Exception as e:
+            #     print(f"An error occurred during upload: {e}")
                 return
 
 if __name__ == "__main__":
