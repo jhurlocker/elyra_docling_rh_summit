@@ -60,11 +60,13 @@ oc create configmap -n ${SUMMIT_PROJECT} model-config-file
 oc apply -k ./components/create-bucket-job/base
 
 ### DOWNLOAD MODEL files
+pip install huggingface_hub
 python components/model-server/download-model.py
 
 ### UPLOAD MODEL FILES
 python components/model-server/model-folder-upload.py
 
+oc apply -f components/model-server/sa-secret-token.yaml
 oc apply -f components/model-server/granite2b-conn.yaml
 oc apply -f components/model-server/model-namespace.yaml
 oc apply -f components/model-server/servingruntimes.yaml
