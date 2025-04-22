@@ -25,9 +25,9 @@ def upload_folder_to_s3(local_folder, bucket_name, s3_folder='model'):
             relative_path = os.path.relpath(local_path, local_folder)
             s3_key = os.path.join(s3_folder, relative_path)
 
-            try:
-                s3.upload_file(local_path, bucket_name, s3_key)
-                print(f"Uploaded {local_path} to s3://{bucket_name}/{s3_key}")
+            # try:
+            s3.upload_file(local_path, bucket_name, s3_key)
+            print(f"Uploaded {local_path} to s3://{bucket_name}/{s3_key}")
             # except FileNotFoundError:
             #     print(f"Error: File not found at {local_path}")
             # except NoCredentialsError:
