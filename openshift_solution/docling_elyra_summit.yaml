@@ -14,10 +14,10 @@ components:
   comp-run-a-file-6:
     executorLabel: exec-run-a-file-6
 deploymentSpec:
-  inputs:  # This is where you define pipeline inputs
-    - name: cos_endpoint
-      type: String
   executors:
+    inputs:  # This is where you define pipeline inputs
+        - name: cos_endpoint
+          type: String
     exec-run-a-file:
       container:
         args:
