@@ -34,7 +34,7 @@ deploymentSpec:
 
           sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt
           && python3 bootstrapper.py --pipeline-name ''docling_elyra_summit'' --cos-endpoint
-          ''$COS_ENDPOINT_ENV''
+          ''http://localhost''
           --cos-bucket ''pipelines'' --cos-directory ''docling_elyra_summit-0424194748''
           --cos-dependencies-archive ''copy_files-e4165c2f-c2b3-4415-92b8-a0d36b4b4e69.tar.gz''
           --file ''elyra_docling_rh_summit/openshift_solution/copy_files.py'' --outputs
@@ -54,11 +54,6 @@ deploymentSpec:
           value: /tmp
         - name: ELYRA_RUN_NAME
           value: '{{workflow.uid}}'
-        - name: COS_ENDPOINT_ENV
-          valueFrom:
-            configMapKeyRef:
-              name: my-cos-config  # Name of your ConfigMap
-              key: endpoint-url 
         image: quay.io/modh/runtime-images@sha256:a6e87550d7f932732b8e52c309d356fb76ae0ba0fd0b8566de0ba4ff49c2db84
     exec-run-a-file-2:
       container:
