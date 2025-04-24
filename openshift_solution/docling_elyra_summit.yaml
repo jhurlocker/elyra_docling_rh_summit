@@ -35,7 +35,7 @@ deploymentSpec:
           sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt
           && python3 bootstrapper.py --pipeline-name ''docling_elyra_summit'' --cos-endpoint
           ''http://minio.summit-project-user1.svc.cluster.local:9000'' --cos-bucket
-          ''pipelines'' --cos-directory ''docling_elyra_summit-0421041141'' --cos-dependencies-archive
+          ''pipelines'' --cos-directory ''docling_elyra_summit-0424043932'' --cos-dependencies-archive
           ''copy_files-e4165c2f-c2b3-4415-92b8-a0d36b4b4e69.tar.gz'' --file ''elyra_docling_rh_summit/openshift_solution/copy_files.py''
           --outputs ''sourcedocs/2304.14953v2-part1.pdf;sourcedocs/2304.14953v2-part2.docx;resultdocs/note.txt''
           "
@@ -74,9 +74,9 @@ deploymentSpec:
           sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt
           && python3 bootstrapper.py --pipeline-name ''docling_elyra_summit'' --cos-endpoint
           ''http://minio.summit-project-user1.svc.cluster.local:9000'' --cos-bucket
-          ''pipelines'' --cos-directory ''docling_elyra_summit-0421041141'' --cos-dependencies-archive
+          ''pipelines'' --cos-directory ''docling_elyra_summit-0424043932'' --cos-dependencies-archive
           ''ingest-summit-9da8883d-0641-40ae-8fa3-ac56dcc1fb5b.tar.gz'' --file ''instruct-generate/ingest-summit.ipynb''
-          --inputs ''sourcedocs/2304.14953v2-part1.pdf;sourcedocs/2304.14953v2-part2.docx;resultdocs/note.txt''
+          --inputs ''resultdocs/note.txt;sourcedocs/2304.14953v2-part1.pdf;sourcedocs/2304.14953v2-part2.docx''
           --outputs ''resultdocs/2304.14953v2-part1.md;resultdocs/2304.14953v2-part2.md''
           "
 
@@ -114,10 +114,10 @@ deploymentSpec:
           sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt
           && python3 bootstrapper.py --pipeline-name ''docling_elyra_summit'' --cos-endpoint
           ''http://minio.summit-project-user1.svc.cluster.local:9000'' --cos-bucket
-          ''pipelines'' --cos-directory ''docling_elyra_summit-0421041141'' --cos-dependencies-archive
+          ''pipelines'' --cos-directory ''docling_elyra_summit-0424043932'' --cos-dependencies-archive
           ''combine_markdown-db01761f-d8d8-4a07-907c-f4af071227c6.tar.gz'' --file
           ''elyra_docling_rh_summit/openshift_solution/combine_markdown.py'' --inputs
-          ''resultdocs/note.txt;sourcedocs/2304.14953v2-part1.pdf;resultdocs/2304.14953v2-part2.md;resultdocs/2304.14953v2-part1.md;sourcedocs/2304.14953v2-part2.docx''
+          ''sourcedocs/2304.14953v2-part2.docx;resultdocs/note.txt;resultdocs/2304.14953v2-part2.md;sourcedocs/2304.14953v2-part1.pdf;resultdocs/2304.14953v2-part1.md''
           --outputs ''resultdocs/combined.md'' "
 
           '
@@ -154,10 +154,10 @@ deploymentSpec:
           sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt
           && python3 bootstrapper.py --pipeline-name ''docling_elyra_summit'' --cos-endpoint
           ''http://minio.summit-project-user1.svc.cluster.local:9000'' --cos-bucket
-          ''pipelines'' --cos-directory ''docling_elyra_summit-0421041141'' --cos-dependencies-archive
+          ''pipelines'' --cos-directory ''docling_elyra_summit-0424043932'' --cos-dependencies-archive
           ''HITL_MarkdownReview-e91d428b-1397-4f77-9514-3f29be067bcd.tar.gz'' --file
           ''elyra_docling_rh_summit/openshift_solution/HITL_MarkdownReview.ipynb''
-          --inputs ''resultdocs/note.txt;sourcedocs/2304.14953v2-part1.pdf;resultdocs/2304.14953v2-part2.md;resultdocs/combined.md;resultdocs/2304.14953v2-part1.md;sourcedocs/2304.14953v2-part2.docx''
+          --inputs ''sourcedocs/2304.14953v2-part2.docx;resultdocs/note.txt;resultdocs/combined.md;resultdocs/2304.14953v2-part2.md;sourcedocs/2304.14953v2-part1.pdf;resultdocs/2304.14953v2-part1.md''
           "
 
           '
@@ -194,9 +194,9 @@ deploymentSpec:
           sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt
           && python3 bootstrapper.py --pipeline-name ''docling_elyra_summit'' --cos-endpoint
           ''http://minio.summit-project-user1.svc.cluster.local:9000'' --cos-bucket
-          ''pipelines'' --cos-directory ''docling_elyra_summit-0421041141'' --cos-dependencies-archive
+          ''pipelines'' --cos-directory ''docling_elyra_summit-0424043932'' --cos-dependencies-archive
           ''injest-splitter-8a30ef71-5ae7-4c47-b3b9-e1c583ed99fe.tar.gz'' --file ''instruct-generate/injest-splitter.ipynb''
-          --inputs ''resultdocs/note.txt;sourcedocs/2304.14953v2-part1.pdf;resultdocs/2304.14953v2-part2.md;resultdocs/combined.md;resultdocs/2304.14953v2-part1.md;sourcedocs/2304.14953v2-part2.docx''
+          --inputs ''sourcedocs/2304.14953v2-part2.docx;resultdocs/note.txt;resultdocs/combined.md;resultdocs/2304.14953v2-part2.md;sourcedocs/2304.14953v2-part1.pdf;resultdocs/2304.14953v2-part1.md''
           "
 
           '
@@ -233,9 +233,9 @@ deploymentSpec:
           sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt
           && python3 bootstrapper.py --pipeline-name ''docling_elyra_summit'' --cos-endpoint
           ''http://minio.summit-project-user1.svc.cluster.local:9000'' --cos-bucket
-          ''pipelines'' --cos-directory ''docling_elyra_summit-0421041141'' --cos-dependencies-archive
+          ''pipelines'' --cos-directory ''docling_elyra_summit-0424043932'' --cos-dependencies-archive
           ''HITL_qna_review-b816de19-69a2-4660-a2af-ca808be3581a.tar.gz'' --file ''elyra_docling_rh_summit/openshift_solution/HITL_qna_review.ipynb''
-          --inputs ''resultdocs/note.txt;sourcedocs/2304.14953v2-part1.pdf;resultdocs/2304.14953v2-part2.md;resultdocs/combined.md;resultdocs/2304.14953v2-part1.md;sourcedocs/2304.14953v2-part2.docx''
+          --inputs ''sourcedocs/2304.14953v2-part2.docx;resultdocs/note.txt;resultdocs/combined.md;resultdocs/2304.14953v2-part2.md;sourcedocs/2304.14953v2-part1.pdf;resultdocs/2304.14953v2-part1.md''
           "
 
           '
@@ -333,7 +333,7 @@ platforms:
               secretKey: AWS_ACCESS_KEY_ID
             - envVar: AWS_SECRET_ACCESS_KEY
               secretKey: AWS_SECRET_ACCESS_KEY
-            secretName: minioconnection
+            secretName: minio-data-conn
         exec-run-a-file-2:
           podMetadata:
             annotations:
@@ -351,7 +351,7 @@ platforms:
               secretKey: AWS_ACCESS_KEY_ID
             - envVar: AWS_SECRET_ACCESS_KEY
               secretKey: AWS_SECRET_ACCESS_KEY
-            secretName: minioconnection
+            secretName: minio-data-conn
         exec-run-a-file-3:
           podMetadata:
             annotations:
@@ -369,7 +369,7 @@ platforms:
               secretKey: AWS_ACCESS_KEY_ID
             - envVar: AWS_SECRET_ACCESS_KEY
               secretKey: AWS_SECRET_ACCESS_KEY
-            secretName: minioconnection
+            secretName: minio-data-conn
         exec-run-a-file-4:
           podMetadata:
             annotations:
@@ -388,7 +388,7 @@ platforms:
               secretKey: AWS_ACCESS_KEY_ID
             - envVar: AWS_SECRET_ACCESS_KEY
               secretKey: AWS_SECRET_ACCESS_KEY
-            secretName: minioconnection
+            secretName: minio-data-conn
         exec-run-a-file-5:
           podMetadata:
             annotations:
@@ -406,7 +406,7 @@ platforms:
               secretKey: AWS_ACCESS_KEY_ID
             - envVar: AWS_SECRET_ACCESS_KEY
               secretKey: AWS_SECRET_ACCESS_KEY
-            secretName: minioconnection
+            secretName: minio-data-conn
         exec-run-a-file-6:
           podMetadata:
             annotations:
@@ -425,4 +425,4 @@ platforms:
               secretKey: AWS_ACCESS_KEY_ID
             - envVar: AWS_SECRET_ACCESS_KEY
               secretKey: AWS_SECRET_ACCESS_KEY
-            secretName: minioconnection
+            secretName: minio-data-conn
