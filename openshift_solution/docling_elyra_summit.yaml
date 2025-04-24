@@ -34,10 +34,10 @@ deploymentSpec:
 
           sh -c "python3 -m pip install  packaging && python3 -m pip freeze > requirements-current.txt
           && python3 bootstrapper.py --pipeline-name ''docling_elyra_summit'' --cos-endpoint
-          ''http://minio.summit-project-user1.svc.cluster.local:9000'' --cos-bucket
+          ''os.environ.get('minio-url')'' --cos-bucket
           ''pipelines'' --cos-directory ''docling_elyra_summit-0424043932'' --cos-dependencies-archive
           ''copy_files-e4165c2f-c2b3-4415-92b8-a0d36b4b4e69.tar.gz'' --file ''elyra_docling_rh_summit/openshift_solution/copy_files.py''
-          --outputs ''sourcedocs/2304.14953v2-part1.pdf;sourcedocs/2304.14953v2-part2.docx;resultdocs/note.txt''
+          --outputs ''sourcedocs/2304.14953v2-part1.pdf;sourcedocs/2304.14953v2-part2.docx''
           "
 
           '
