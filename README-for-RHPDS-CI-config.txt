@@ -21,12 +21,12 @@ oc new-project summit-project-user10
 Minio
 export SUMMIT_PROJECT=summit-project-user10
 oc apply -k ./components/minio/base
-#export MINIO_API_URL=$(oc get routes -n $SUMMIT_PROJECT -o custom-columns=":spec.host" | grep minio-api)
 envsubst < components/create-bucket-job/base/create-bucket-job-template.yaml > components/create-bucket-job/base/create-bucket-job.yaml
 oc create configmap -n ${SUMMIT_PROJECT} model-config-file
 oc apply -k ./components/create-bucket-job/base
 
 OpenShift AI workbench
+export MINIO_API_URL=$(oc get routes -n $SUMMIT_PROJECT -o custom-columns=":spec.host" | grep minio-api)
 envsubst < components/workbenches/base/env-config-map-template.yaml > components/workbenches/base/env-config-map.yaml
 oc apply -f components/workbenches/base/custom-notebook.yaml
 envsubst < components/datascience-pipelines/secret-dashboard-dspa-secret-template.yaml > components/datascience-pipelines/secret-dashboard-dspa-secret.yaml
