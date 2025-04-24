@@ -335,7 +335,7 @@ platforms:
               secretKey: AWS_ACCESS_KEY_ID
             - envVar: AWS_SECRET_ACCESS_KEY
               secretKey: AWS_SECRET_ACCESS_KEY
-            secretName: dashboard-dspa-secret
+            secretName: ds-pipeline-config
         exec-run-a-file-2:
           podMetadata:
             annotations:
@@ -353,7 +353,7 @@ platforms:
               secretKey: AWS_ACCESS_KEY_ID
             - envVar: AWS_SECRET_ACCESS_KEY
               secretKey: AWS_SECRET_ACCESS_KEY
-            secretName: dashboard-dspa-secret
+            secretName: ds-pipeline-config
         exec-run-a-file-3:
           podMetadata:
             annotations:
@@ -371,7 +371,7 @@ platforms:
               secretKey: AWS_ACCESS_KEY_ID
             - envVar: AWS_SECRET_ACCESS_KEY
               secretKey: AWS_SECRET_ACCESS_KEY
-            secretName: dashboard-dspa-secret
+            secretName: ds-pipeline-config
         exec-run-a-file-4:
           podMetadata:
             annotations:
@@ -390,7 +390,7 @@ platforms:
               secretKey: AWS_ACCESS_KEY_ID
             - envVar: AWS_SECRET_ACCESS_KEY
               secretKey: AWS_SECRET_ACCESS_KEY
-            secretName: dashboard-dspa-secret
+            secretName: ds-pipeline-config
         exec-run-a-file-5:
           podMetadata:
             annotations:
@@ -408,7 +408,7 @@ platforms:
               secretKey: AWS_ACCESS_KEY_ID
             - envVar: AWS_SECRET_ACCESS_KEY
               secretKey: AWS_SECRET_ACCESS_KEY
-            secretName: dashboard-dspa-secret
+            secretName: ds-pipeline-config
         exec-run-a-file-6:
           podMetadata:
             annotations:
@@ -427,4 +427,4 @@ platforms:
               secretKey: AWS_ACCESS_KEY_ID
             - envVar: AWS_SECRET_ACCESS_KEY
               secretKey: AWS_SECRET_ACCESS_KEY
-            secretName: dashboard-dspa-secret
+            secretName: ds-pipeline-config
