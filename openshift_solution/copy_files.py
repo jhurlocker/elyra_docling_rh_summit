@@ -44,8 +44,8 @@ local_directory = "sourcedocs" #local directory to save to.
 local_file_path1 = os.path.join('sourcedocs/2304.14953v2-part1.pdf')
 local_file_path2 = os.path.join('sourcedocs/2304.14953v2-part2.docx')
 bucket_name = "upload-files"
-minio_url = os.environ.get('minio-url')
-print(minio_url)
+minio_url = os.environ.get('minio_url')
+print('=== PIPELINE PARAM= ', minio_url)
 endpoint_url = minio_url  # Replace with your MinIO endpoint
 print(endpoint_url)
 access_key = "minio"             # Replace with your MinIO access key

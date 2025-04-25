@@ -1,9 +1,9 @@
 # Generated markdown files
-file1_name = 'resultdocs/2304.14953v2-part1.md'
-file2_name = 'resultdocs/2304.14953v2-part2.md'
+file1_name = 'sourcedocs/2304.14953v2-part1.md'
+file2_name = 'sourcedocs/2304.14953v2-part2.md'
 
 # Combined markdow file
-destination_filename = 'resultdocs/combined.md'
+destination_filename = 'sourcedocs/combined.md'
 
 # Open the first file in read mode ('r')
 with open(file1_name, 'r') as file1:
@@ -26,7 +26,7 @@ import boto3
 from botocore.exceptions import ClientError
 import os
 
-def upload_file_to_minio(file_path, bucket_name, object_name=None, endpoint_url=os.environ.get('minio-url'), access_key='minio', secret_key='minio123'):
+def upload_file_to_minio(file_path, bucket_name, object_name=None, endpoint_url=os.environ.get('minio_url'), access_key='minio', secret_key='minio123'):
     """Upload a file to an S3 bucket.
 
     Args:
@@ -62,7 +62,7 @@ def upload_file_to_minio(file_path, bucket_name, object_name=None, endpoint_url=
       return False
 
 # Example usage (replace with your actual values):
-file_path = 'resultdocs/combined.md'  # Replace with the path to your file
+file_path = 'sourcedocs/combined.md'  # Replace with the path to your file
 bucket_name = 'data-files-bucket' # Replace with your bucket name
 
 #create example file if it doesn't exist.
