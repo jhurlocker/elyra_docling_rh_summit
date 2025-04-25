@@ -40,7 +40,7 @@ def download_file_from_s3(bucket_name, object_name, local_file_path, endpoint_ur
 
 # Example usage:
 
-local_directory = "../../instruct-generate/sourcedocs" #local directory to save to.
+local_directory = "sourcedocs" #local directory to save to.
 local_file_path1 = os.path.join('sourcedocs/2304.14953v2-part1.pdf')
 local_file_path2 = os.path.join('sourcedocs/2304.14953v2-part2.docx')
 bucket_name = "upload-files"

@@ -18,8 +18,7 @@
               "include_subdirectories": false,
               "outputs": [
                 "sourcedocs/2304.14953v2-part1.pdf",
-                "sourcedocs/2304.14953v2-part2.docx",
-                "resultdocs/note.txt"
+                "sourcedocs/2304.14953v2-part2.docx"
               ],
               "env_vars": [],
               "kubernetes_pod_annotations": [],
@@ -34,7 +33,7 @@
             "label": "Ingest Files",
             "ui_data": {
               "label": "Ingest Files",
-              "image": "/notebook/summit-project-user1/test-workbench/static/elyra/python.svg",
+              "image": "/notebook/summit-user3/jh-workbench/static/elyra/python.svg",
               "x_pos": 132,
               "y_pos": 94.5,
               "description": "Run Python script"
@@ -91,7 +90,7 @@
             "label": "HITL Markdown",
             "ui_data": {
               "label": "HITL Markdown",
-              "image": "/notebook/summit-project-user1/test-workbench/static/elyra/notebook.svg",
+              "image": "/notebook/summit-user3/jh-workbench/static/elyra/notebook.svg",
               "x_pos": 148.00003051757812,
               "y_pos": 266.5,
               "description": "Run notebook file"
@@ -155,7 +154,7 @@
             "label": "QNA Generator",
             "ui_data": {
               "label": "QNA Generator",
-              "image": "/notebook/summit-project-user1/test-workbench/static/elyra/notebook.svg",
+              "image": "/notebook/summit-user3/jh-workbench/static/elyra/notebook.svg",
               "x_pos": 405.0000305175781,
               "y_pos": 265.5,
               "description": "Run notebook file"
@@ -219,7 +218,7 @@
             "label": "HITL QNA",
             "ui_data": {
               "label": "HITL QNA",
-              "image": "/notebook/summit-project-user1/test-workbench/static/elyra/notebook.svg",
+              "image": "/notebook/summit-user3/jh-workbench/static/elyra/notebook.svg",
               "x_pos": 661,
               "y_pos": 265.5,
               "description": "Run notebook file"
@@ -285,7 +284,7 @@
             "label": "Combine Markdown",
             "ui_data": {
               "label": "Combine Markdown",
-              "image": "/notebook/summit-project-user1/test-workbench/static/elyra/python.svg",
+              "image": "/notebook/summit-user3/jh-workbench/static/elyra/python.svg",
               "x_pos": 719,
               "y_pos": 92.5,
               "description": "Run Python script"
@@ -359,7 +358,7 @@
             "label": "Docling",
             "ui_data": {
               "label": "Docling",
-              "image": "/notebook/summit-project-user1/test-workbench/static/elyra/notebook.svg",
+              "image": "/notebook/summit-user3/jh-workbench/static/elyra/notebook.svg",
               "x_pos": 428,
               "y_pos": 93,
               "description": "Run notebook file"
@@ -441,13 +440,14 @@
           "name": "docling_elyra_summit",
           "runtime": "Data Science Pipelines",
           "pipeline_defaults": {
-            "kubernetes_shared_mem_size": {},
-            "kubernetes_pod_labels": [],
             "mounted_volumes": [],
             "kubernetes_tolerations": [],
             "kubernetes_pod_annotations": [],
+            "kubernetes_shared_mem_size": {},
+            "kubernetes_pod_labels": [],
+            "kubernetes_secrets": [],
             "env_vars": [],
-            "kubernetes_secrets": []
+            "disable_node_caching": "True"
           }
         }
       },
