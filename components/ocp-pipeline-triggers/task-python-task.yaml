@@ -11,10 +11,15 @@ spec:
         #!/bin/bash
         BEARER_TOKEN=$(oc whoami -t)
         DSPA_ENDPOINT=$(oc get routes -o custom-columns=":spec.host" | grep ds-pipeline-dspa)
+        SVC=$(oc get service minio -o go-template='{{.spec.clusterIP}}')
+        echo $SVC
+        MINIO_SVC="http://"${SVC}":9000"
         echo "Bearer Token: $BEARER_TOKEN"
         echo "DSPA_ENDPOINT: $DSPA_ENDPOINT"
+        echo "MINIO_SVC: $MINIO_SVC"
         echo $BEARER_TOKEN > /workspace/bearer_token.txt
         echo $DSPA_ENDPOINT > /workspace/dspa_endpoint.txt
+        echo $MINIO_SVC > /workspace/minio_svc.txt
     - computeResources: {}
       image: 'registry.access.redhat.com/ubi8/python-39:latest'
       name: run-python
@@ -22,6 +27,7 @@ spec:
         #!/bin/bash
         BEARER_TOKEN=$(cat /workspace/bearer_token.txt)
         DSPA_ENDPOINT=$(cat /workspace/dspa_endpoint.txt)
+        MINIO_SVC=$(cat /workspace/minio_svc.txt)
 
         pip install --no-cache-dir requests
 
@@ -41,7 +47,7 @@ spec:
         # Send GET request to the API
         response = requests.get(pipe_url, headers=headers)
         print(response)
-        
+
         # Check if the request was successful
         if response.status_code == 200:
         # Parse the response as JSON
@@ -55,6 +61,7 @@ spec:
         ### START DSP RUN
         print('=== STARTING DSP RUN ===')
         # Set the Kubeflow API URL and authentication token
+
         api_url = 'https://$DSPA_ENDPOINT/apis/v1beta1/runs'
         headers = {
             'Authorization': 'Bearer $BEARER_TOKEN',
@@ -69,7 +76,13 @@ spec:
             },
             'pipeline_spec': {
                 'pipeline_id': pipeline_id
-            }
+            },
+            'parameters': [
+                {
+                  'name': 'minio_url',
+                  'value': '$MINIO_SVC'
+                }
+            ]
         }
 
         # Make the POST request to trigger the pipeline
@@ -81,4 +94,3 @@ spec:
             print(response.json())  # Get details about the pipeline run
         else:
             print(f'Error triggering pipeline: {response.status_code} - {response.text}')"
-
