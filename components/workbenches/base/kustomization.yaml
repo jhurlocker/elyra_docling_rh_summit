@@ -12,3 +12,4 @@ resources:
   - elyra-docling-workbench-pvc.yaml
   - elyra-docling-workbench.yaml
   - env-config-map.yaml
+  - elyra-docling-workbench-sa-rb.yaml
