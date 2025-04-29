@@ -25,6 +25,9 @@ envsubst < components/create-bucket-job/base/create-bucket-job-template.yaml > c
 oc create configmap -n ${SUMMIT_PROJECT} model-config-file
 oc apply -k ./components/create-bucket-job/base
 
+RoleBinding
+oc apply -f components/workbenches/base/role-binding.yaml
+
 OpenShift Pipeline triggers
 export OCP_APPS_URL=$(oc get ingresses.config.openshift.io cluster -o jsonpath='{.spec.domain}')
 envsubst < components/ocp-pipeline-triggers/el-route-template.yaml > components/ocp-pipeline-triggers/el-route.yaml
