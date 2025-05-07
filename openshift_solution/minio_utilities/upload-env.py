@@ -43,6 +43,6 @@ minio_url = os.environ.get('minio-url')
 print(minio_url)
 
 if upload_file_to_minio(file_path, bucket_name):
-    print("Upload of environment config file successful! Data Science Pipeline should be starting.")
+    print("Upload of environment config file successful!")
 else:
     print("Upload failed.")
