@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: redhat-ods-applications
 
 resources:
-  - datasciencecluster.yaml
+#  - datasciencecluster.yaml
   - dsc-init.yaml
   - redhat-ods-applicaitons-namespace.yaml
 #  - odhdashboardconfig.yaml
